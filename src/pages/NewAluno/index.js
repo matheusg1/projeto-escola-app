@@ -5,24 +5,28 @@ import api from '../../services/api'
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
-export default function NewEscola() {
+export default function NewAluno() {
     const [nome, setNome] = useState('');
-    const [endereco, setEndereco] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [dataNascimento, setdataNascimento] = useState('');
 
     const navigator = useNavigate();
 
-    async function createEscola(e) {
+    async function createAluno(e) {
         e.preventDefault();
 
         const data = {
             nome,
-            endereco
+            sobrenome,
+            cpf,
+            dataNascimento
         }
         
         //const accessToken = localStorage.getItem('accessToken');
         
         try {
-            await api.post('/Escola/Create', data
+            await api.post('/Aluno/Create', data
             /*
             , {            
                 headers: {
@@ -32,25 +36,28 @@ export default function NewEscola() {
             }*/
             )
         } catch (error) {
-            alert("Erro ao cadastrar escola")
+            alert("Erro ao cadastrar aluno")
         }
-        navigator('/escolas')
+        navigator('/alunos')
     }
 
     return (
-        <div className="new-escola-container">
+        <div className="new-aluno-container">
             <div className="content">
                 <section className="form">
                     <img src={logoImage} alt="logo" />
-                    <h1>Cadastrar Escola</h1>
-                    <p>Coloque as informações da escola e clique em 'Cadastrar'</p>
-                    <Link className="back-link" to="/escolas">
+                    <h1>Cadastrar aluno</h1>
+                    <p>Coloque as informações da aluno e clique em 'Cadastrar'</p>
+                    <Link className="back-link" to="/alunos">
 
                     </Link>
                 </section>
-                <form onSubmit={createEscola}>
+                <form onSubmit={createAluno}>
                     <input placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} />
-                    <input placeholder="Endereço" value={endereco} onChange={e => setEndereco(e.target.value)} />
+                    <input placeholder="Sobrenome" value={sobrenome} onChange={e => setSobrenome(e.target.value)} />
+                    <input placeholder="Cpf" value={cpf} onChange={e => setCpf(e.target.value)} />
+                    <input placeholder="dataNascimento" type="date" value={dataNascimento} onChange={e => setdataNascimento(e.target.value)} />
+                    
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>
