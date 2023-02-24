@@ -7,7 +7,7 @@ export default function Login(){
     return (
         <div className="login-container">
             <section className="form">  
-            <img src={logoImage} alt="Erudio Logo"/>
+            <img src={logoImage} alt='logo'/>
             
             </section>
             <img src={padlock} alt="login"/>
