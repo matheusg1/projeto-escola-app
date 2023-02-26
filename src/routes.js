@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login'
 import Escolas from './pages/Escolas'
 import Turmas from './pages/Turmas'
+import Materias from './pages/Materias'
 import Alunos from './pages/Alunos'
 
 import NewEscola from './pages/NewEscola'
@@ -18,6 +19,7 @@ export default function Routes1(){
             <Route path="/" element={<Login/>}/>
             <Route path="/escolas" element={<Escolas/>}/>
             <Route path="/turmas" element={<Turmas/>}/>
+            <Route path="/materias" element={<Materias/>}/>
             <Route path="/alunos" element={<Alunos/>}/>
 
             <Route path="/escola/new/:escolaId" element={<NewEscola/>}/>        
