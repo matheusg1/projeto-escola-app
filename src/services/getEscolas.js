@@ -2,6 +2,7 @@ import api from './api';
 
 export async function getTurmasByEscola(setTurmas, id) {
   try {
+    //, { params: { Id: id } }
     const response = await api.get(`escola/findByID/?Id=${id}`);
     setTurmas(response.data.turmas);
   } catch (error) {
