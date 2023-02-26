@@ -1,70 +1,56 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
-
 import api from "../../services/api";
+import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
-export default function NewAluno() {
+export default function NewMateria() {
   const [turmas, setTurmas] = useState();
   const [escolas, setEscolas] = useState([]);
 
   const [nome, setNome] = useState("");
-  const [sobrenome, setSobrenome] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [dataNascimento, setDataNascimento] = useState("");
+  const [professor, setProfessor] = useState("");
   const [turmaId, setTurmaId] = useState("");
   const [escolaId, setEscolaId] = useState("");
-  
+
   useEffect(() => {
     getEscolas(setEscolas);
   }, []);
 
   const navigator = useNavigate();
 
-  async function createAluno(e) {
+  async function createMateria(e) {
     e.preventDefault();
 
     const data = {
       nome,
-      sobrenome,
-      cpf,
-      dataNascimento,
+      professor,
       turmaId,
     };
 
-    //const accessToken = localStorage.getItem('accessToken');
-
     try {
-      await api.post(
-        "/Aluno/Create",
-        data
-        /*
-            , {            
-                headers: {
-                    Authorization: `Bearer ${accessToken}`
-                }
-                
-            }*/
-      );
+      await api.post("/Materia/create", data);
     } catch (error) {
-      alert("Erro ao cadastrar aluno");
+      alert("Erro ao cadastrar matéria");
     }
-    navigator("/alunos");
+    navigator("/materias");
+  }
+  //<select onChange={(e) => setEscolaId(e.target.value)}>
+  async function aaab(id) {
+    await getTurmasByEscola(setTurmas, id);
   }
 
   return (
-    <div className="new-aluno-container">
+    <div className="new-materia-container">
       <div className="content">
         <section className="form">
           <img src={logoImage} alt="logo" />
-          <h1>Cadastrar aluno</h1>
-          <p>Coloque as informações da aluno e clique em 'Cadastrar'</p>
-          <Link className="back-link" to="/alunos"></Link>
+          <h1>Cadastrar matéria</h1>
+          <p>Coloque as informações da matéria e clique em 'Cadastrar'</p>
+          <Link className="back-link" to="/materias"></Link>
         </section>
-        <form onSubmit={createAluno}>
-            
+        <form onSubmit={createMateria}>
           <select
             onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}
           >
@@ -92,29 +78,16 @@ export default function NewAluno() {
               </>
             )}
           </select>
-
           <input
-            placeholder="Nome"
+            placeholder="Nome da matéria"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
           />
           <input
-            placeholder="Sobrenome"
-            value={sobrenome}
-            onChange={(e) => setSobrenome(e.target.value)}
+            placeholder="Professor"
+            value={professor}
+            onChange={(e) => setProfessor(e.target.value)}
           />
-          <input
-            placeholder="Cpf"
-            value={cpf}
-            onChange={(e) => setCpf(e.target.value)}
-          />
-          <input
-            placeholder="dataNascimento"
-            type="date"
-            value={dataNascimento}
-            onChange={(e) => setDataNascimento(e.target.value)}
-          />
-
           <button className="button" type="submit">
             Cadastrar
           </button>

@@ -1,36 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getEscolas } from "../../services/getEscolas";
-import api from "../../services/api";
+import { getTurmas } from "../../services/getTurmas";
 
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
-export default function Escolas() {
-  const [escolas, setEscolas] = useState([]);
+export default function Turmas() {
+  const [turmas, setTurmas] = useState([]);
 
   useEffect(() => {
-    getEscolas(setEscolas);
+    getTurmas(setTurmas);
   }, []);
 
   return (
-    <div className="escola-container">
+    <div className="turma-container">
       <header>
         <img src={logoImage} alt="logo" />
         <span>
           Bem vindo, <strong>Matheus</strong>!
         </span>
-        <Link className="button" to="/escola/new">
-          Criar nova escola
+        <Link className="button" to="/turma/new">
+          Criar nova turma
         </Link>
         <button type="button">Logoff</button>
       </header>
-      <h1>Escolas registradas</h1>
+      <h1>Turmas registradas</h1>
       <ul>
-        {escolas.map((e) => (
+        {turmas.map((e) => (
           <li>
-            <strong>{e.nome}</strong>
-            <p>{e.endereco}</p>
+            <strong>{e.codigo}</strong>
             <button type="button">Editar</button>
             <button type="button">Apagar</button>
           </li>
