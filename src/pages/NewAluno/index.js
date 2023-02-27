@@ -67,11 +67,11 @@ export default function NewAluno() {
       dataNascimento,
       escolaId,
       turmaId,
-      matricula,
     };
 
     try {
       if (alunoId == 0) {
+        console.log(data);
         await api.post("/aluno/create/", data);
       } else {
         data.alunoId = id;
@@ -99,7 +99,11 @@ export default function NewAluno() {
         </section>
         <form onSubmit={saveOrUpdate}>
           <select
-            onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}
+            onChange={(e) => {
+              getTurmasByEscola(setTurmas, e.target.value);
+              setEscolaId(e.target.value);
+            }
+            }
           >
             <option defaultValue hidden isdisabled="true">
               Escolas
@@ -161,6 +165,6 @@ export default function NewAluno() {
           </button>
         </form>
       </div>
-    </div>
+    </div >
   );
 }

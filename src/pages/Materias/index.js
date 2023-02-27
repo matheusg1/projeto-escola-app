@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getMaterias } from "../../services/getMaterias";
 import api from "../../services/api";
+
+import Button from 'react-bootstrap/Button';
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
@@ -31,7 +33,7 @@ export default function Materias() {
           Bem vindo, <strong>Matheus</strong>!
         </span>
         <Link className="button" to="/materia/new/0">
-          Criar nova matéria
+          Cadastrar nova matéria
         </Link>
         <button type="button">Logoff</button>
       </header>
@@ -43,9 +45,7 @@ export default function Materias() {
             <p>{m.nome}</p>
             <strong>Professor</strong>
             <p>{m.professor}</p>
-            <button type="button" onClick={() => deleteMateria(m.materiaId)}>
-              Apagar
-            </button>
+            <Button variant="outline-danger" onClick={() => deleteMateria(m.materiaId)}>Apagar</Button>{' '}
           </li>
         ))}
       </ul>

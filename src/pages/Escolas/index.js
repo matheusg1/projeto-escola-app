@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { getEscolas } from "../../services/getEscolas";
 import api from "../../services/api";
 
+import Button from 'react-bootstrap/Button';
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
+
 
 export default function Escolas() {
   const [escolas, setEscolas] = useState([]);
@@ -24,12 +26,12 @@ export default function Escolas() {
       alert("Erro ao excluir escola");
     }
   }
-  async function editEscola(id){
+  async function editEscola(id) {
     try {
-        navigator(`/escola/new/${id}`)
-      } catch (error) {
-        alert("Erro ao editar escola");
-      }
+      navigator(`/escola/new/${id}`)
+    } catch (error) {
+      alert("Erro ao editar escola");
+    }
   }
 
   return (
@@ -50,12 +52,59 @@ export default function Escolas() {
           <li key={e.escolaId}>
             <strong>{e.nome}</strong>
             <p>{e.endereco}</p>
-            <button type="button" onClick={() => editEscola(e.escolaId)}>Editar</button>
-            <button type="button" onClick={() => deleteEscola(e.escolaId)}>Apagar</button>
+            <Button variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
+            <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}
           </li>
         ))}
       </ul>
-    </div>
+    </div >
   );
 }
-//
+/*
+      <ul>
+        <Container>
+          {escolas.map((e) => (
+            <Row sm={8}>
+              <Col>
+                <li key={e.escolaId}>
+                  <strong>Nome</strong>
+                  <p>{e.nome}</p>
+                  <strong>Endereço</strong>
+                  <p>{e.endereco}</p>
+                  <Button variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
+                  <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}
+                </li>
+              </Col>
+            </Row>
+          ))}
+        </Container>
+      </ul>
+
+
+
+        {escolas.map((e) => {
+          { Grid1(e) }
+          <>
+            <button type="button" onClick={() => editEscola(e.escolaId)}>Editar</button>
+            <button type="button" onClick={() => deleteEscola(e.escolaId)}>Apagar</button>
+          </>
+        })}
+
+
+
+
+          <button type="button" onClick={() => editEscola(e.escolaId)}>Editar</button>
+          <button type="button" onClick={() => deleteEscola(e.escolaId)}>Apagar</button>
+
+
+      <ul>
+        {escolas.map((e) => (
+          <li key={e.escolaId}>
+            <strong>{e.nome}</strong>
+            <p>{e.endereco}</p>
+            <Button variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
+            <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}
+          </li>
+        ))}
+      </ul>
+*/

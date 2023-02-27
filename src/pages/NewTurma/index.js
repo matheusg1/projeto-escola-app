@@ -48,6 +48,7 @@ export default function NewTurma() {
 
     try {
       if (turmaId == 0) {
+        data.escolaId = escolaId
         await api.post("/turma/create/", data);
       } else {
         data.turmaId = id;
@@ -67,7 +68,9 @@ export default function NewTurma() {
           <img src={logoImage} alt="logo" />
           <h1>Cadastrar turma</h1>
           <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
-          <Link className="back-link" to="/turmas"></Link>
+          <Link className="back-link" to="/turmas">
+            <button>Voltar</button>
+          </Link>
         </section>
         <form onSubmit={saveOrUpdate}>
           <select onChange={(e) => setEscolaId(e.target.value)}>

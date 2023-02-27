@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
+import Button from 'react-bootstrap/Button';
 
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
@@ -37,7 +38,7 @@ export default function Turmas() {
       alert("Erro ao editar turma");
     }
   }
-  
+
   return (
     <div className="turma-container">
       <header>
@@ -46,14 +47,14 @@ export default function Turmas() {
           Bem vindo, <strong>Matheus</strong>!
         </span>
         <Link className="button" to="/turma/new/0">
-          Criar nova turma
+          Cadastrar nova turma
         </Link>
         <button type="button">Logoff</button>
       </header>
-      <h1>Turmas registradas</h1>
+      <h1>Turmas</h1>
       <select
         onChange={(e) => {
-            getTurmasByEscola(setTurmas, e.target.value);            
+          getTurmasByEscola(setTurmas, e.target.value);
         }}
       >
         <option defaultValue hidden>
@@ -73,13 +74,8 @@ export default function Turmas() {
             <li key={t.turmaId}>
               <strong>Código</strong>
               <p>{t.codigo}</p>
-
-              <button type="button" onClick={() => editTurma(t.turmaId)}>
-                Editar
-              </button>
-              <button type="button" onClick={() => deleteTurma(t.turmaId)}>
-                Apagar
-              </button>
+              <Button variant="outline-primary" onClick={() => editTurma(t.turmaId)}>Editar</Button>{' '}
+              <Button variant="outline-danger" onClick={() => deleteTurma(t.turmaId)}>Apagar</Button>{' '}
             </li>
           ))}
       </ul>

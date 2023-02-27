@@ -16,13 +16,6 @@ export default function Login() {
 
   return (
     <>
-      <div>
-        <Link to="/escolas">Escolas</Link>
-        <Link to="/turmas">Turmas</Link>
-        <Link to="/materias">Matérias</Link>
-        <Link to="/alunos">Alunos</Link>
-        <p>asdads</p>
-      </div>
       <div className="login-container">
         <section className="form">
           <img src={logoImage} alt="logo" />

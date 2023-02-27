@@ -1,9 +1,13 @@
-import React/*, {useState}*/ from "react";
+import React from "react";
 import './global.css';
+import Navbar1 from "./Navbar1";
 import Routes1 from './routes';
 
 export default function App() {
-    return(        
-        <Routes1/>
+    return (
+        <>
+            <Navbar1 />
+            <Routes1 />
+        </>
     );
 }

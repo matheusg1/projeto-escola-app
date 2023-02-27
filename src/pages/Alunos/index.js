@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAlunosByTurma } from "../../services/getTurmas";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
+
+import Button from 'react-bootstrap/Button';
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
@@ -48,13 +50,15 @@ export default function Alunos() {
           Bem vindo, <strong>Matheus</strong>!
         </span>
         <Link className="button" to="/aluno/new/0">
-          Criar novo aluno
+          Cadastrar novo aluno
         </Link>
         <button type="button">Logoff</button>
       </header>
       <h1>Alunos registrados</h1>
-
-      <select onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}>
+      <select onChange={(e) => {
+        getTurmasByEscola(setTurmas, e.target.value);
+        setAlunos([])
+      }}>
         <option defaultValue hidden>
           Escolas
         </option>
@@ -93,16 +97,11 @@ export default function Alunos() {
             <p>
               {Intl.DateTimeFormat("pt-BR").format(new Date(a.dataNascimento))}
             </p>
-            <button type="button" onClick={() => editAluno(a.alunoId)}>
-              Editar
-            </button>
-            <button type="button" onClick={() => deleteAluno(a.alunoId)}>
-              Apagar
-            </button>
+            <Button variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
+            <Button variant="outline-danger" onClick={() => deleteAluno(a.alunoId)}>Apagar</Button>{' '}
           </li>
         ))}
       </ul>
     </div>
   );
 }
-//      <select onChange={(e) => setTurmaId(e.target.value)}>
