@@ -30,12 +30,12 @@ export default function Materias() {
         <span>
           Bem vindo, <strong>Matheus</strong>!
         </span>
-        <Link className="button" to="/materia/new">
+        <Link className="button" to="/materia/new/0">
           Criar nova matéria
         </Link>
         <button type="button">Logoff</button>
       </header>
-      <h1>Matérias registradas</h1>
+      <h1>Matérias</h1>
       <ul>
         {materias.map((m) => (
           <li key={m.materiaId}>
@@ -43,7 +43,6 @@ export default function Materias() {
             <p>{m.nome}</p>
             <strong>Professor</strong>
             <p>{m.professor}</p>
-            <button type="button">Editar</button>
             <button type="button" onClick={() => deleteMateria(m.materiaId)}>
               Apagar
             </button>

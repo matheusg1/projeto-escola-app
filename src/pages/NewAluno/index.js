@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 
 import api from "../../services/api";
@@ -10,20 +12,52 @@ export default function NewAluno() {
   const [turmas, setTurmas] = useState();
   const [escolas, setEscolas] = useState([]);
 
+  const [id, setId] = useState();
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
-  const [turmaId, setTurmaId] = useState("");
+  const [matricula, setMatricula] = useState("");
   const [escolaId, setEscolaId] = useState("");
-  
+  const [turmaId, setTurmaId] = useState("");
+  const { alunoId } = useParams();
+  const navigator = useNavigate();
+
+  useEffect(() => {
+    if (alunoId == 0) {
+      return;
+    } else {
+      loadAluno(alunoId);
+    }
+  }, [alunoId]);
+
   useEffect(() => {
     getEscolas(setEscolas);
   }, []);
 
-  const navigator = useNavigate();
+  async function loadAluno(id) {
+    try {
+      const response = await api.get(`aluno/findByID`, {
+        params: { Id: id },
+      });
 
-  async function createAluno(e) {
+      let dataFormatada = response.data.dataNascimento.split("T", 10)[0];
+
+      setId(response.data.alunoId);
+      setNome(response.data.nome);
+      setSobrenome(response.data.sobrenome);
+      setCpf(response.data.cpf);
+      setDataNascimento(dataFormatada);
+      setEscolaId(response.data.escolaId);
+      setTurmaId(response.data.turmaId);
+      setMatricula(response.data.matricula);
+    } catch (err) {
+      alert("Erro ao receber informações do aluno");
+      navigator("/alunos");
+    }
+  }
+
+  async function saveOrUpdate(e) {
     e.preventDefault();
 
     const data = {
@@ -31,23 +65,21 @@ export default function NewAluno() {
       sobrenome,
       cpf,
       dataNascimento,
+      escolaId,
       turmaId,
+      matricula,
     };
 
-    //const accessToken = localStorage.getItem('accessToken');
-
     try {
-      await api.post(
-        "/Aluno/Create",
-        data
-        /*
-            , {            
-                headers: {
-                    Authorization: `Bearer ${accessToken}`
-                }
-                
-            }*/
-      );
+      if (alunoId == 0) {
+        await api.post("/aluno/create/", data);
+      } else {
+        data.alunoId = id;
+        data.turmaId = turmaId;
+        data.escolaId = escolaId;
+        data.matricula = matricula;
+        await api.put("/aluno/update/", data);
+      }
     } catch (error) {
       alert("Erro ao cadastrar aluno");
     }
@@ -61,10 +93,11 @@ export default function NewAluno() {
           <img src={logoImage} alt="logo" />
           <h1>Cadastrar aluno</h1>
           <p>Coloque as informações da aluno e clique em 'Cadastrar'</p>
-          <Link className="back-link" to="/alunos"></Link>
+          <Link className="back-link" to="/alunos">
+            <button>Voltar</button>
+          </Link>
         </section>
-        <form onSubmit={createAluno}>
-            
+        <form onSubmit={saveOrUpdate}>
           <select
             onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}
           >
@@ -92,6 +125,14 @@ export default function NewAluno() {
               </>
             )}
           </select>
+          {matricula && (
+            <input
+              placeholder="Matrícula"
+              value={matricula}
+              onChange={(e) => setNome(e.target.value)}
+              disabled
+            />
+          )}
 
           <input
             placeholder="Nome"

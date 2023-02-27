@@ -23,9 +23,9 @@ export default function Routes1(){
             <Route path="/alunos" element={<Alunos/>}/>
 
             <Route path="/escola/new/:escolaId" element={<NewEscola/>}/>        
-            <Route path="/turma/new/:turmaId/" element={<NewTurma/>}/>
-            <Route path="/materia/new" element={<NewMateria/>}/>
-            <Route path="/aluno/new" element={<NewAluno/>}/>
+            <Route path="/turma/new/:turmaId" element={<NewTurma/>}/>
+            <Route path="/materia/new/:materiaId" element={<NewMateria/>}/>
+            <Route path="/aluno/new/:alunoId" element={<NewAluno/>}/>
         </Routes>
     </Router>
   );

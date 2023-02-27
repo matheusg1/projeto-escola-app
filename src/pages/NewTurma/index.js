@@ -10,10 +10,9 @@ export default function NewTurma() {
 
   const [id, setId] = useState();
   const [codigo, setCodigo] = useState("");
-  const navigator = useNavigate();
   const [escolaId, setEscolaId] = useState();
   const { turmaId } = useParams();
-  //const { escolaId } = useParams();
+  const navigator = useNavigate();
 
   useEffect(() => {
     if (turmaId == 0) {

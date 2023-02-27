@@ -53,7 +53,7 @@ export default function Turmas() {
       <h1>Turmas registradas</h1>
       <select
         onChange={(e) => {
-            getTurmasByEscola(setTurmas, e.target.value);
+            getTurmasByEscola(setTurmas, e.target.value);            
         }}
       >
         <option defaultValue hidden>

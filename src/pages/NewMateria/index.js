@@ -37,9 +37,6 @@ export default function NewMateria() {
     navigator("/materias");
   }
   //<select onChange={(e) => setEscolaId(e.target.value)}>
-  async function aaab(id) {
-    await getTurmasByEscola(setTurmas, id);
-  }
 
   return (
     <div className="new-materia-container">

@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getAlunos } from "../../services/getAlunos";
-import guidGenerator from "../../services/guidGenerator";
+import { Link, useNavigate } from "react-router-dom";
+import { getAlunosByTurma } from "../../services/getTurmas";
+import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([]);
+  const [turmas, setTurmas] = useState([]);
+
+  const [escolas, setEscolas] = useState([]);
+  const [escolaId, setEscolaId] = useState("");
+  const [turmaId, setTurmaId] = useState([]);
+
+  const navigator = useNavigate();
 
   useEffect(() => {
-    getAlunos(setAlunos);
-    guidGenerator();
-
+    getEscolas(setEscolas, escolas);
   }, []);
 
   async function deleteAluno(id) {
@@ -26,6 +31,15 @@ export default function Alunos() {
     }
   }
 
+  async function editAluno(id) {
+    try {
+      navigator(`/aluno/new/${id}`);
+    } catch (error) {
+      console.log(error);
+      alert("Erro ao editar informações do aluno");
+    }
+  }
+
   return (
     <div className="aluno-container">
       <header>
@@ -33,12 +47,37 @@ export default function Alunos() {
         <span>
           Bem vindo, <strong>Matheus</strong>!
         </span>
-        <Link className="button" to="/aluno/new">
-          Criar nova aluno
+        <Link className="button" to="/aluno/new/0">
+          Criar novo aluno
         </Link>
         <button type="button">Logoff</button>
       </header>
       <h1>Alunos registrados</h1>
+
+      <select onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}>
+        <option defaultValue hidden>
+          Escolas
+        </option>
+        {escolas.map((e) => (
+          <option key={e.escolaId} value={e.escolaId}>
+            {e.nome}
+          </option>
+        ))}
+        )
+      </select>
+
+      <select onChange={(e) => getAlunosByTurma(setAlunos, e.target.value)}>
+        <option defaultValue hidden>
+          Turmas
+        </option>
+        {turmas &&
+          turmas.map((t) => (
+            <option key={t.turmaId} value={t.turmaId}>
+              {t.codigo}
+            </option>
+          ))}
+        )
+      </select>
       <ul>
         {alunos.map((a) => (
           <li key={a.alunoId}>
@@ -54,11 +93,16 @@ export default function Alunos() {
             <p>
               {Intl.DateTimeFormat("pt-BR").format(new Date(a.dataNascimento))}
             </p>
-            <button type="button">Editar</button>
-            <button type="button" onClick={() => deleteAluno(a.alunoId)} >Apagar</button>
+            <button type="button" onClick={() => editAluno(a.alunoId)}>
+              Editar
+            </button>
+            <button type="button" onClick={() => deleteAluno(a.alunoId)}>
+              Apagar
+            </button>
           </li>
         ))}
       </ul>
     </div>
   );
 }
+//      <select onChange={(e) => setTurmaId(e.target.value)}>
