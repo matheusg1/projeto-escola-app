@@ -15,8 +15,8 @@ export default function Alunos() {
 
   const [escolas, setEscolas] = useState([]);
   const [escolaId, setEscolaId] = useState("");
-  const [escola, setEscola] = useState("");
-  const [turma, setTurma] = useState([]);
+  const [escola, setEscola] = useState("Escolas");
+  const [turma, setTurma] = useState("Turmas");
   const [turmaId, setTurmaId] = useState([]);
 
   const navigator = useNavigate();
@@ -40,15 +40,16 @@ export default function Alunos() {
     try {
       navigator(`/aluno/new/${id}`);
     } catch (error) {
-      console.log(error);
       alert("Erro ao editar informações do aluno");
     }
   }
 
   const handleSelectEscola = (e) => {
+    setAlunos([])
     let escolaInfo = e.split(",");
     getTurmasByEscola(setTurmas, escolaInfo[0]);
     setEscola(escolaInfo[1]);
+
   }
 
   const handleSelectTurma = (e) => {
@@ -71,7 +72,7 @@ export default function Alunos() {
       <h1 className="mt-5">Alunos</h1>
 
       <div className="d-flex">
-        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Escolas" onSelect={handleSelectEscola
+        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
         }>
           {escolas &&
             escolas.map((e) => (
@@ -79,7 +80,7 @@ export default function Alunos() {
             ))}
         </DropdownButton>
 
-        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Turmas" onSelect={handleSelectTurma
+        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={turma} onSelect={handleSelectTurma
         }>
           {turmas &&
             turmas.map((t) => (

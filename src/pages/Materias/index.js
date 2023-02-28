@@ -12,9 +12,9 @@ import logoImage from "../../assets/logo.svg";
 
 export default function Materias() {
   const [materias, setMaterias] = useState([]);
-  const [turma, setTurma] = useState([]);
+  const [turma, setTurma] = useState("Turmas");
   const [turmas, setTurmas] = useState([]);
-  const [escola, setEscola] = useState('');
+  const [escola, setEscola] = useState("Escolas");
   const [escolas, setEscolas] = useState([]);
 
   useEffect(() => {
@@ -34,6 +34,7 @@ export default function Materias() {
   }
 
   const handleSelectEscola = (e) => {
+    setMaterias([]);
     let escolaInfo = e.split(",");
     getTurmasByEscola(setTurmas, escolaInfo[0]);
     setEscola(escolaInfo[1]);
@@ -59,7 +60,7 @@ export default function Materias() {
       <h1 className="mt-5">Matérias</h1>
       <div className="d-flex">
 
-        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Escolas" onSelect={handleSelectEscola
+        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
         }>
           {escolas &&
             escolas.map((e) => (
@@ -67,7 +68,7 @@ export default function Materias() {
             ))}
         </DropdownButton>
 
-        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Turmas" onSelect={handleSelectTurma
+        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={turma} onSelect={handleSelectTurma
         }>
           {turmas &&
             turmas.map((t) => (

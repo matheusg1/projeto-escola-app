@@ -13,7 +13,7 @@ import logoImage from "../../assets/logo.svg";
 export default function Turmas() {
   const [turmas, setTurmas] = useState([]);
   const [escolas, setEscolas] = useState([]);
-  const [escola, setEscola] = useState([]);
+  const [escola, setEscola] = useState("Escolas");
 
   const navigator = useNavigate();
 
@@ -58,7 +58,7 @@ export default function Turmas() {
         </Link>
       </header>
       <h1 className="mt-5">Turmas</h1>
-      <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Escolas" onSelect={handleSelect
+      <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelect
       }>
         {escolas &&
           escolas.map((e) => (
