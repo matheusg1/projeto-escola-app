@@ -45,8 +45,6 @@ export default function Materias() {
     getMateriasByTurma(setMaterias, turmaInfo[0]);
   }
 
-
-
   return (
     <div className="mt-3 mx-5">
       <header className="d-flex flex-row align-items-center justify-content-between">
@@ -100,7 +98,6 @@ export default function Materias() {
                 </td>
               </tr>
             ))}
-
           </tbody>
         </table>
       }
