@@ -35,19 +35,17 @@ export default function Escolas() {
   }
 
   return (
-    <div className="escola-container mt-3 mx-5">
+    <div className="mt-3 mx-5">
       <header className="d-flex flex-row align-items-center justify-content-between">
         <img src={logoImage} style={{ height: "70px" }} alt="logo" />
-        <h2>
+        <h2 className="px-4">
           Bem vindo!
         </h2>
         <Link className="btn btn-dark btn-lg" style={{ width: "300px" }} to="/escola/new/0">
-          Criar nova escola
+          Cadastrar nova escola
         </Link>
       </header>
       <h1 className="mt-5">Escolas registradas</h1>
-
-
       <table className="table table-hover table-bordered table-striped table-dark mt-4">
         <thead>
           <tr>
