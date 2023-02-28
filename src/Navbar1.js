@@ -8,37 +8,17 @@ import Navbar from 'react-bootstrap/Navbar';
 export default function Navbar1() {
     return (
         <>
-        <Navbar bg="secondary" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Jurema Sistemas</Navbar.Brand>
-          <Nav className="ms-auto">
-            <Nav.Link href="/escolas">Escolas</Nav.Link>
-            <Nav.Link href="/turmas">Turmas</Nav.Link>
-            <Nav.Link href="/materias">Matérias</Nav.Link>
-            <Nav.Link href="/alunos">Alunos</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
-            
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand href="#home">Jurema Sistemas</Navbar.Brand>
+                    <Nav className="ms-auto">
+                        <Nav.Link href="/escolas">Escolas</Nav.Link>
+                        <Nav.Link href="/turmas">Turmas</Nav.Link>
+                        <Nav.Link href="/materias">Matérias</Nav.Link>
+                        <Nav.Link href="/alunos">Alunos</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
         </>
     );
-}/*
-<nav className="nav">
-                <ul>
-                    <li>
-                        <a href="/escolas">Escolas</a>
-                    </li>
-                    <li>
-                        <a href="/turmas">Turmas</a>
-                    </li>
-                    <li>
-                        <a href="/materias">Matérias</a>
-                    </li>
-                    <li>
-                        <a href="/alunos">Alunos</a>
-                    </li>
-                </ul>
-            </nav>
-
-*/
+}

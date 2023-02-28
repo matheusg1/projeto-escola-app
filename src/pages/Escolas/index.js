@@ -4,7 +4,7 @@ import { getEscolas } from "../../services/getEscolas";
 import api from "../../services/api";
 
 import Button from 'react-bootstrap/Button';
-import "./styles.css";
+//import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
 
@@ -35,17 +35,47 @@ export default function Escolas() {
   }
 
   return (
-    <div className="escola-container">
-      <header>
-        <img src={logoImage} alt="logo" />
-        <span>
-          Bem vindo, <strong>Matheus</strong>!
-        </span>
-        <Link className="button" to="/escola/new/0">
+    <div className="escola-container mt-3 mx-5">
+      <header className="d-flex flex-row align-items-center justify-content-between">
+        <img src={logoImage} style={{ height: "70px" }} alt="logo" />
+        <h2>
+          Bem vindo!
+        </h2>
+        <Link className="btn btn-dark btn-lg" style={{ width: "300px" }} to="/escola/new/0">
           Criar nova escola
         </Link>
-        <button type="button">Logoff</button>
       </header>
+      <h1 className="mt-5">Escolas registradas</h1>
+
+
+      <table className="table table-hover table-bordered table-striped table-dark mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Alterar / Apagar</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {escolas.map((e) => (
+            <tr key={e.escolaId}>
+              <td>{e.nome}</td>
+              <td>{e.endereco}</td>
+              <td className="d-block">
+                <Button className="mx-1" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
+              <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}</td>
+            </tr>
+          ))}
+
+        </tbody>
+      </table>
+
+    </div >
+  );
+}
+/*
+
       <h1>Escolas registradas</h1>
       <ul>
         {escolas.map((e) => (
@@ -57,10 +87,18 @@ export default function Escolas() {
           </li>
         ))}
       </ul>
-    </div >
-  );
-}
-/*
+
+
+
+
+
+
+
+
+
+
+
+
       <ul>
         <Container>
           {escolas.map((e) => (
