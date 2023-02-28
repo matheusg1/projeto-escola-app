@@ -60,12 +60,13 @@ export default function Turmas() {
       <h1 className="mt-5">Turmas</h1>
       <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Escolas" onSelect={handleSelect
       }>
-        {escolas && escolas.map((e) => (
-          <Dropdown.Item eventKey={[e.escolaId, e.nome]} key={e.escolaId} value={e.escolaId}>{e.nome}</Dropdown.Item>
-        ))}
+        {escolas &&
+          escolas.map((e) => (
+            <Dropdown.Item eventKey={[e.escolaId, e.nome]} key={e.escolaId} value={e.escolaId}>{e.nome}</Dropdown.Item>
+          ))}
       </DropdownButton>
 
-      {turmas.length > 0  &&
+      {turmas.length > 0 &&
         <table className="table table-hover table-bordered table-striped table-dark mt-4">
           <thead>
             <tr>

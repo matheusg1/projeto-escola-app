@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getMaterias } from "../../services/getMaterias";
+import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import { getTurmas, getMateriasByTurma } from "../../services/getTurmas";
 import api from "../../services/api";
 
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
 export default function Materias() {
   const [materias, setMaterias] = useState([]);
-  const [turmas, setTurmas] = useState([]);
   const [turma, setTurma] = useState([]);
+  const [turmas, setTurmas] = useState([]);
+  const [escola, setEscola] = useState('');
+  const [escolas, setEscolas] = useState([]);
 
   useEffect(() => {
-    //getMaterias(setMaterias);
-    getTurmas(setTurmas);
+    getEscolas(setEscolas);
+    //getTurmas(setTurmas);
   }, []);
 
   async function deleteMateria(id) {
@@ -29,11 +33,19 @@ export default function Materias() {
     }
   }
 
-  const handleSelect = (e) => {
-    let turmaInfo = e.split(",")
-    setTurma(turmaInfo[1])
+  const handleSelectEscola = (e) => {
+    let escolaInfo = e.split(",");
+    getTurmasByEscola(setTurmas, escolaInfo[0]);
+    setEscola(escolaInfo[1]);
+  }
+
+  const handleSelectTurma = (e) => {
+    let turmaInfo = e.split(",");
+    setTurma(turmaInfo[1]);
     getMateriasByTurma(setMaterias, turmaInfo[0]);
   }
+
+
 
   return (
     <div className="mt-3 mx-5">
@@ -47,17 +59,51 @@ export default function Materias() {
         </Link>
       </header>
       <h1 className="mt-5">Matérias</h1>
-      <ul>
-        {materias.map((m) => (
-          <li key={m.materiaId}>
-            <strong>Nome</strong>
-            <p>{m.nome}</p>
-            <strong>Professor</strong>
-            <p>{m.professor}</p>
-            <Button variant="outline-danger" onClick={() => deleteMateria(m.materiaId)}>Apagar</Button>{' '}
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="d-flex">
+
+        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Escolas" onSelect={handleSelectEscola
+        }>
+          {escolas &&
+            escolas.map((e) => (
+              <Dropdown.Item eventKey={[e.escolaId, e.nome]} key={e.escolaId} value={e.turmaId}>{e.nome}</Dropdown.Item>
+            ))}
+        </DropdownButton>
+
+        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title="Turmas" onSelect={handleSelectTurma
+        }>
+          {turmas &&
+            turmas.map((t) => (
+              <Dropdown.Item eventKey={[t.turmaId, t.codigo]} key={t.turmaId} value={t.turmaId}>{t.codigo}</Dropdown.Item>
+            ))}
+        </DropdownButton>
+      </div>
+      {materias.length > 0 &&
+        <table className="table table-hover table-bordered table-striped table-dark mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Escola</th>
+              <th scope="col">Turma</th>
+              <th scope="col">Matéria</th>
+              <th scope="col">Professor</th>
+              <th scope="col">Alterar / Apagar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {materias.map((m) => (
+              <tr key={m.materiaId}>
+                <td>{escola}</td>
+                <td>{turma}</td>
+                <td>{m.nome}</td>
+                <td>{m.professor}</td>
+                <td>
+                  <Button variant="outline-danger" onClick={() => deleteMateria(m.materiaId)}>Apagar</Button>{' '}
+                </td>
+              </tr>
+            ))}
+
+          </tbody>
+        </table>
+      }
+    </div >
   );
 }
