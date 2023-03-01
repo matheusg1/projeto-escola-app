@@ -86,83 +86,76 @@ export default function NewAluno() {
   }
 
   return (
-    <div className="new-aluno-container">
-      <div className="content">
-        <section className="form">
-          <img src={logoImage} alt="logo" />
+    <div className="container">
+      <div className="row mt-5">
+        <div className="col">
+          <img src={logoImage} className="h-50" alt="logo" />
           <h1>Cadastrar aluno</h1>
           <p>Coloque as informações da aluno e clique em 'Cadastrar'</p>
           <Link className="back-link" to="/alunos">
-            <button>Voltar</button>
+            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
           </Link>
-        </section>
-        <form onSubmit={saveOrUpdate}>
-          <select
-            onChange={(e) => {
-              getTurmasByEscola(setTurmas, e.target.value);
-              setEscolaId(e.target.value);
-            }
-            }
-          >
-            <option defaultValue hidden isdisabled="true">
-              Escolas
-            </option>
-            {escolas.map((e) => (
-              <option key={e.escolaId} value={e.escolaId}>
-                {e.nome}
+        </div>
+        <div className="col">
+          <form onSubmit={saveOrUpdate} className="mt-3">
+            <select className="form-select form-select-lg mb-2"
+              onChange={(e) => {
+                getTurmasByEscola(setTurmas, e.target.value);
+                setEscolaId(e.target.value);
+              }
+              }
+            >
+              <option defaultValue hidden isdisabled="true">
+                Escolas
               </option>
-            ))}
-          </select>
+              {escolas.map((e) => (
+                <option key={e.escolaId} value={e.escolaId}>
+                  {e.nome}
+                </option>
+              ))}
+            </select>
 
-          <select onChange={(e) => setTurmaId(e.target.value)}>
-            <option defaultValue hidden>
-              Turmas
-            </option>
-            {turmas && (
-              <>
-                {turmas.map((t) => (
-                  <option key={t.turmaId} value={t.turmaId}>
-                    {t.codigo}
-                  </option>
-                ))}
-              </>
+            <select className="form-select form-select-lg mb-2" onChange={(e) => setTurmaId(e.target.value)}>
+              <option defaultValue hidden>
+                Turmas
+              </option>
+              {turmas && (
+                <>
+                  {turmas.map((t) => (
+                    <option key={t.turmaId} value={t.turmaId}>
+                      {t.codigo}
+                    </option>
+                  ))}
+                </>
+              )}
+            </select>
+            {matricula && (
+              <input type="text" className="form-control form-control-lg mb-2" placeholder="Matrícula"
+                value={matricula}
+                onChange={(e) => setNome(e.target.value)} disabled />
             )}
-          </select>
-          {matricula && (
-            <input
-              placeholder="Matrícula"
-              value={matricula}
-              onChange={(e) => setNome(e.target.value)}
-              disabled
-            />
-          )}
 
-          <input
-            placeholder="Nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-          <input
-            placeholder="Sobrenome"
-            value={sobrenome}
-            onChange={(e) => setSobrenome(e.target.value)}
-          />
-          <input
-            placeholder="Cpf"
-            value={cpf}
-            onChange={(e) => setCpf(e.target.value)}
-          />
-          <input
-            placeholder="dataNascimento"
-            type="date"
-            value={dataNascimento}
-            onChange={(e) => setDataNascimento(e.target.value)}
-          />
+            <input type="text" className="form-control form-control-lg mb-2" placeholder="Nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)} />
 
-          <button className="button" type="submit">
-            Cadastrar
-          </button>
-        </form>
+            <input type="text" className="form-control form-control-lg mb-2" placeholder="Sobrenome"
+              value={sobrenome}
+              onChange={(e) => setSobrenome(e.target.value)} />
+
+            <input type="text" className="form-control form-control-lg mb-2" placeholder="CPF"
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)} />
+
+            <input type="date" className="form-control form-control-lg mb-2"
+              value={dataNascimento}
+              onChange={(e) => setDataNascimento(e.target.value)} />
+
+            <button className="btn btn-dark btn-lg w-100" type="submit">
+              Cadastrar
+            </button>
+          </form>
+        </div>
       </div>
     </div >
   );

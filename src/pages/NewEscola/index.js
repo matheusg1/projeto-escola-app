@@ -61,10 +61,10 @@ export default function NewEscola() {
         <div className="row mt-5">
           <div className="col">
             <img src={logoImage} style={{ height: "300px" }} alt="logo" />
-            <h1>Cadastrar Escola</h1>
+            <h1>Cadastrar escola</h1>
             <p>Coloque as informações da escola e clique em 'Cadastrar'</p>
             <Link className="back-link" to="/escolas">
-              <button className="btn btn-primary btn-lg" type="button">Voltar</button>
+              <button className="btn btn-dark btn-lg" type="button">Voltar</button>
             </Link>
           </div>
           <div className="col">
@@ -80,7 +80,7 @@ export default function NewEscola() {
                   onChange={(e) => setEndereco(e.target.value)}
                   className="form-control" />
               </div>
-              <button className="btn btn-primary btn-lg w-100" type="submit">
+              <button className="btn btn-dark btn-lg w-100" type="submit">
                 Cadastrar / Alterar
               </button>
             </form>

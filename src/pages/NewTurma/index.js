@@ -62,37 +62,40 @@ export default function NewTurma() {
   }
 
   return (
-    <div className="new-turma-container">
-      <div className="content">
-        <section className="form">
-          <img src={logoImage} alt="logo" />
+    <div className="container">
+      <div className="row mt-5">
+        <div className="col">
+          <img src={logoImage} style={{ height: "300px" }} alt="logo" />
           <h1>Cadastrar turma</h1>
           <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
           <Link className="back-link" to="/turmas">
-            <button>Voltar</button>
+          <button className="btn btn-dark btn-lg" type="button">Voltar</button>
           </Link>
-        </section>
-        <form onSubmit={saveOrUpdate}>
-          <select onChange={(e) => setEscolaId(e.target.value)}>
-            <option defaultValue hidden>
-              Escolas
-            </option>
-            {escolas.map((e) => (
-              <option key={e.escolaId} value={e.escolaId}>
-                {e.nome}
+        </div>
+        <div className="col">
+          <form onSubmit={saveOrUpdate} className="mt-5">
+            <select className="form-select form-select-lg mb-3" onChange={(e) => setEscolaId(e.target.value)}>
+              <option defaultValue hidden>
+                Escolas
               </option>
-            ))}
-            )
-          </select>
-          <input
-            placeholder="Código"
-            value={codigo}
-            onChange={(e) => setCodigo(e.target.value)}
-          />
-          <button className="button" type="submit">
-            Cadastrar
-          </button>
-        </form>
+              {escolas.map((e) => (
+                <option key={e.escolaId} value={e.escolaId}>
+                  {e.nome}
+                </option>
+              ))}
+              )
+            </select>
+            <div className="input-group input-group-lg mb-3">
+              <input type="text" placeholder="Código"
+                value={codigo}
+                onChange={(e) => setCodigo(e.target.value)}
+                className="form-control" />
+            </div>
+            <button className="btn btn-dark btn-lg w-100" type="submit">
+              Cadastrar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
