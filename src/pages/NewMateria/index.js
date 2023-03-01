@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
-import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
 export default function NewMateria() {
@@ -36,7 +35,6 @@ export default function NewMateria() {
     }
     navigator("/materias");
   }
-
   return (
     <div className="container">
       <div className="row mt-5">
@@ -44,11 +42,11 @@ export default function NewMateria() {
           <img src={logoImage} className="h-50" alt="logo" />
           <h1>Cadastrar matéria</h1>
           <p>Coloque as informações da matéria e clique em 'Cadastrar'</p>
-          <Link className="back-link" to="/materias"></Link>
+          <Link className="back-link" to="/materias">
+            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+          </Link>
         </div>
         <div className="col">
-
-
           <form onSubmit={createMateria} className="mt-3">
             <select className="form-select form-select-lg mb-3"
               onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}

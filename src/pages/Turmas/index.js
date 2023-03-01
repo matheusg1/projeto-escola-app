@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
+import { getQuantidadeAlunosByTurma } from "../../services/getTurmas";
 import api from "../../services/api";
 
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
-import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
 export default function Turmas() {
@@ -72,6 +72,7 @@ export default function Turmas() {
             <tr>
               <th scope="col">Escola</th>
               <th scope="col">Turma</th>
+              <th scope="col">Alunos</th>
               <th scope="col">Alterar / Apagar</th>
             </tr>
           </thead>
@@ -80,6 +81,7 @@ export default function Turmas() {
               <tr key={t.turmaId}>
                 <td>{escola}</td>
                 <td>{t.codigo}</td>
+                <td>Qtd???</td>
                 <td className="d-block">
                   <Button className="mx-1" variant="outline-primary" onClick={() => editTurma(t.turmaId)}>Editar</Button>{' '}
                   <Button variant="outline-danger" onClick={() => deleteTurma(t.turmaId)}>Apagar</Button>{' '}</td>
@@ -91,28 +93,3 @@ export default function Turmas() {
     </div>
   );
 }
-
-
-
-
-/*
-
-      <select
-        onChange={(e) => {
-          getTurmasByEscola(setTurmas, e.target.value);
-        }}
-      >
-        <option defaultValue hidden>
-          Escolas
-        </option>
-        {escolas.map((e) => (
-          <option key={e.escolaId} value={e.escolaId}>
-            {e.nome}
-          </option>
-        ))}
-        )
-      </select>
-
-      <ul>
-
-*/

@@ -7,7 +7,6 @@ import api from "../../services/api";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
-import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
 export default function Materias() {
@@ -19,7 +18,6 @@ export default function Materias() {
 
   useEffect(() => {
     getEscolas(setEscolas);
-    //getTurmas(setTurmas);
   }, []);
 
   async function deleteMateria(id) {
@@ -58,23 +56,23 @@ export default function Materias() {
         </Link>
       </header>
       <h1 className="mt-5">Matérias</h1>
-      <div className="d-flex">
+      <div className="d-flex flex-row">
 
-        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
-        }>
-          {escolas &&
-            escolas.map((e) => (
-              <Dropdown.Item eventKey={[e.escolaId, e.nome]} key={e.escolaId} value={e.turmaId}>{e.nome}</Dropdown.Item>
-            ))}
-        </DropdownButton>
+          <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
+          }>
+            {escolas &&
+              escolas.map((e) => (
+                <Dropdown.Item eventKey={[e.escolaId, e.nome]} key={e.escolaId} value={e.turmaId}>{e.nome}</Dropdown.Item>
+              ))}
+          </DropdownButton>
 
-        <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={turma} onSelect={handleSelectTurma
-        }>
-          {turmas &&
-            turmas.map((t) => (
-              <Dropdown.Item eventKey={[t.turmaId, t.codigo]} key={t.turmaId} value={t.turmaId}>{t.codigo}</Dropdown.Item>
-            ))}
-        </DropdownButton>
+          <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={turma} onSelect={handleSelectTurma
+          }>
+            {turmas &&
+              turmas.map((t) => (
+                <Dropdown.Item eventKey={[t.turmaId, t.codigo]} key={t.turmaId} value={t.turmaId}>{t.codigo}</Dropdown.Item>
+              ))}
+          </DropdownButton>
       </div>
       {materias.length > 0 &&
         <table className="table table-hover table-bordered table-striped table-dark mt-4">

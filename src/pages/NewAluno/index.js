@@ -4,7 +4,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 
 import api from "../../services/api";
-import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
 export default function NewAluno() {

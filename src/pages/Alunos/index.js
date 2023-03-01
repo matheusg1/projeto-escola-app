@@ -6,7 +6,7 @@ import api from "../../services/api";
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import Button from 'react-bootstrap/Button'; import "./styles.css";
+import Button from 'react-bootstrap/Button';
 import logoImage from "../../assets/logo.svg";
 
 export default function Alunos() {

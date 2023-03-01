@@ -25,3 +25,13 @@ export async function getAlunosByTurma(setAlunos, id) {
     alert("error etc");
   }
 }
+
+export function getQuantidadeAlunosByTurma(id) {
+  try {
+    const response = api.get(`turma/getQuantidadeAlunosByTurma/?Id=${id}`);
+    console.log(response.data.quantidadeAlunos);
+    return(response.data.quantidadeAlunos)
+  } catch (error) {
+    alert("error etc");
+  }
+}
