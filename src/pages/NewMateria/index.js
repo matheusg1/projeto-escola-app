@@ -36,59 +36,63 @@ export default function NewMateria() {
     }
     navigator("/materias");
   }
-  //<select onChange={(e) => setEscolaId(e.target.value)}>
 
   return (
-    <div className="new-materia-container">
-      <div className="content">
-        <section className="form">
-          <img src={logoImage} alt="logo" />
+    <div className="container">
+      <div className="row mt-5">
+        <div className="col">
+          <img src={logoImage} className="h-50" alt="logo" />
           <h1>Cadastrar matéria</h1>
           <p>Coloque as informações da matéria e clique em 'Cadastrar'</p>
           <Link className="back-link" to="/materias"></Link>
-        </section>
-        <form onSubmit={createMateria}>
-          <select
-            onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}
-          >
-            <option defaultValue hidden isdisabled="true">
-              Escolas
-            </option>
-            {escolas.map((e) => (
-              <option key={e.escolaId} value={e.escolaId}>
-                {e.nome}
-              </option>
-            ))}
-          </select>
+        </div>
+        <div className="col">
 
-          <select onChange={(e) => setTurmaId(e.target.value)}>
-            <option defaultValue hidden>
-              Turmas
-            </option>
-            {turmas && (
-              <>
-                {turmas.map((t) => (
-                  <option key={t.turmaId} value={t.turmaId}>
-                    {t.codigo}
-                  </option>
-                ))}
-              </>
-            )}
-          </select>
-          <input
-            placeholder="Nome da matéria"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-          <input
-            placeholder="Professor"
-            value={professor}
-            onChange={(e) => setProfessor(e.target.value)}
-          />
-          <button className="button" type="submit">
-            Cadastrar
-          </button>
-        </form>
+
+          <form onSubmit={createMateria} className="mt-3">
+            <select className="form-select form-select-lg mb-3"
+              onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}
+            >
+              <option defaultValue hidden isdisabled="true">
+                Escolas
+              </option>
+              {escolas.map((e) => (
+                <option key={e.escolaId} value={e.escolaId}>
+                  {e.nome}
+                </option>
+              ))}
+            </select>
+
+            <select className="form-select form-select-lg mb-3"
+              onChange={(e) => setTurmaId(e.target.value)}>
+              <option defaultValue hidden>
+                Turmas
+              </option>
+              {turmas && (
+                <>
+                  {turmas.map((t) => (
+                    <option key={t.turmaId} value={t.turmaId}>
+                      {t.codigo}
+                    </option>
+                  ))}
+                </>
+              )}
+            </select>
+            <input className="form-control form-control-lg mb-3"
+              placeholder="Nome da matéria"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
+            <input className="form-control form-control-lg mb-3"
+              placeholder="Professor"
+              value={professor}
+              onChange={(e) => setProfessor(e.target.value)}
+            />
+            <button className="btn btn-dark btn-lg w-100" type="submit">
+              Cadastrar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -60,7 +60,7 @@ export default function NewEscola() {
       <div className="container">
         <div className="row mt-5">
           <div className="col">
-            <img src={logoImage} style={{ height: "300px" }} alt="logo" />
+            <img src={logoImage} className="h-50" alt="logo" />
             <h1>Cadastrar escola</h1>
             <p>Coloque as informações da escola e clique em 'Cadastrar'</p>
             <Link className="back-link" to="/escolas">

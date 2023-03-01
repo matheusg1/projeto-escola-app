@@ -65,11 +65,11 @@ export default function NewTurma() {
     <div className="container">
       <div className="row mt-5">
         <div className="col">
-          <img src={logoImage} style={{ height: "300px" }} alt="logo" />
+          <img src={logoImage} className="h-50" alt="logo" />
           <h1>Cadastrar turma</h1>
           <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
           <Link className="back-link" to="/turmas">
-          <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
           </Link>
         </div>
         <div className="col">
@@ -85,12 +85,10 @@ export default function NewTurma() {
               ))}
               )
             </select>
-            <div className="input-group input-group-lg mb-3">
-              <input type="text" placeholder="Código"
-                value={codigo}
-                onChange={(e) => setCodigo(e.target.value)}
-                className="form-control" />
-            </div>
+            <input type="text" placeholder="Código"
+              value={codigo}
+              onChange={(e) => setCodigo(e.target.value)}
+              className="form-control form-control-lg mb-3" />
             <button className="btn btn-dark btn-lg w-100" type="submit">
               Cadastrar
             </button>
