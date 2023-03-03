@@ -1,6 +1,10 @@
+
 #  Sistema escolar - Web App c/ React
 
 Aplicação sendo criada para consumir uma API escrita por mim no .NET.
+
+Link da API :
+https://github.com/matheusg1/escola-db-api
 
 ## Diagrama Entidade Relacionamento
 
