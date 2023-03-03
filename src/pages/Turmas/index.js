@@ -81,7 +81,7 @@ export default function Turmas() {
               <tr key={t.turmaId}>
                 <td>{escola}</td>
                 <td>{t.codigo}</td>
-                <td>Qtd???</td>
+                <td>{t.quantidadeAlunos}</td>
                 <td className="d-block">
                   <Button className="mx-1" variant="outline-primary" onClick={() => editTurma(t.turmaId)}>Editar</Button>{' '}
                   <Button variant="outline-danger" onClick={() => deleteTurma(t.turmaId)}>Apagar</Button>{' '}</td>

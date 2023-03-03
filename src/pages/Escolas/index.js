@@ -51,6 +51,7 @@ export default function Escolas() {
           <tr>
             <th scope="col">Nome</th>
             <th scope="col">Endereço</th>
+            <th scope="col">Qtd Turmas</th>
             <th scope="col">Alterar / Apagar</th>
           </tr>
         </thead>
@@ -60,6 +61,7 @@ export default function Escolas() {
             <tr key={e.escolaId}>
               <td>{e.nome}</td>
               <td>{e.endereco}</td>
+              <td>{e.quantidadeTurmas}</td>
               <td className="d-block">
                 <Button className="mx-1" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
               <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}</td>
