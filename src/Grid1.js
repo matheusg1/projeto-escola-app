@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -17,7 +17,7 @@ export default function Grid1(e) {
             </Row>
         </Container>
     );
-}
+}*/
 
 /*
                     <button type="button" onClick={() => navigator(`escola/new/${e.escolaId}`)}>Editar</button>

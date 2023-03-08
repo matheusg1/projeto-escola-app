@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 
 import api from "../../services/api";
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logo-favicon.svg";
 
 export default function NewAluno() {
   const [turmas, setTurmas] = useState();
@@ -88,7 +88,7 @@ export default function NewAluno() {
     <div className="container">
       <div className="row mt-5">
         <div className="col">
-          <img src={logoImage} className="h-50" alt="logo" />
+        <img src={logoImage} className="h-75" alt="logo"/>
           <h1>Cadastrar aluno</h1>
           <p>Coloque as informações da aluno e clique em 'Cadastrar'</p>
           <Link className="back-link" to="/alunos">

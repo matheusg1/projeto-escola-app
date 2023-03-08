@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import api from "../../services/api";
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logo-favicon.svg";
 
 export default function NewEscola() {
   const [id, setId] = useState();
@@ -60,7 +60,7 @@ export default function NewEscola() {
       <div className="container">
         <div className="row mt-5">
           <div className="col">
-            <img src={logoImage} className="h-50" alt="logo" />
+          <img src={logoImage} className="h-75" alt="logo" />
             <h1>Cadastrar escola</h1>
             <p>Coloque as informações da escola e clique em 'Cadastrar'</p>
             <Link className="back-link" to="/escolas">

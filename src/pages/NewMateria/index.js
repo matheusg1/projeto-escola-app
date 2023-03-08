@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logo-favicon.svg";
 
 export default function NewMateria() {
   const [turmas, setTurmas] = useState();
@@ -39,7 +39,7 @@ export default function NewMateria() {
     <div className="container">
       <div className="row mt-5">
         <div className="col">
-          <img src={logoImage} className="h-50" alt="logo" />
+        <img src={logoImage} className="h-75" alt="logo" />
           <h1>Cadastrar matéria</h1>
           <p>Coloque as informações da matéria e clique em 'Cadastrar'</p>
           <Link className="back-link" to="/materias">

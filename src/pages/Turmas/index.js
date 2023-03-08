@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logo-favicon.svg";
 
 export default function Turmas() {
   const [turmas, setTurmas] = useState([]);

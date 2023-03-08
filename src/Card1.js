@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import "bootstrap/dist/css/bootstrap.css"
 import Card from 'react-bootstrap/Card';
 
@@ -15,4 +15,4 @@ export default function Card1() {
             </Card.Body>
         </Card>
     );
-}
+}*/

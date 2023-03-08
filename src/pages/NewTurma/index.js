@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import { getEscolas } from "../../services/getEscolas";
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logo-favicon.svg";
 
 export default function NewTurma() {
   const [escolas, setEscolas] = useState([]);
@@ -64,7 +64,7 @@ export default function NewTurma() {
     <div className="container">
       <div className="row mt-5">
         <div className="col">
-          <img src={logoImage} className="h-50" alt="logo" />
+          <img src={logoImage} className="h-75" alt="logo" />
           <h1>Cadastrar turma</h1>
           <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
           <Link className="back-link" to="/turmas">

@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom';
 import api from '../../services/api'
 */
 import "./styles.css";
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logo-favicon.svg";
 import padlock from "../../assets/padlock.png";
 
 export default function Login() {

@@ -5,7 +5,7 @@ import api from "../../services/api";
 
 import Button from 'react-bootstrap/Button';
 //import "./styles.css";
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logo-favicon.svg";
 
 
 export default function Escolas() {
