@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getEscolas } from "../../services/getEscolas";
 import api from "../../services/api";
@@ -13,6 +13,7 @@ export default function NewTurma() {
     const [escolaId, setEscolaId] = useState();
     const { turmaId } = useParams();
     const navigator = useNavigate();
+    const selectRef = useRef();
 
     useEffect(() => {
         if (turmaId == 0) {
@@ -33,6 +34,9 @@ export default function NewTurma() {
             });
             setId(response.data.turmaId);
             setCodigo(response.data.codigo);
+            setEscolaId(response.data.escolaId)
+            const select = selectRef.current;
+            select.value = response.data.escolaId
         } catch (err) {
             alert("Erro ao receber informações de turma");
             navigator("/turmas");
@@ -74,10 +78,7 @@ export default function NewTurma() {
                 </div>
                 <div className="col">
                     <form onSubmit={saveOrUpdate} className="mt-5">
-                        <select className="form-select form-select-lg mb-3" onChange={(e) => setEscolaId(e.target.value)}>
-                            <option defaultValue hidden>
-                                Escola
-                            </option>
+                        <select className="form-select form-select-lg mb-3" ref={selectRef} onChange={(e) => setEscolaId(e.target.value)}>
                             {escolas.map((e) => (
                                 <option key={e.escolaId} value={e.escolaId}>
                                     {e.nome}
