@@ -12,21 +12,21 @@ import NewTurma from './pages/NewTurma'
 import NewMateria from './pages/NewMateria'
 import NewAluno from './pages/NewAluno'
 
-export default function Routes1(){
-  return(
-    <Router>
-        <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/escolas" element={<Escolas/>}/>
-            <Route path="/turmas" element={<Turmas/>}/>
-            <Route path="/materias" element={<Materias/>}/>
-            <Route path="/alunos" element={<Alunos/>}/>
-            
-            <Route path="/escola/new/:escolaId" element={<NewEscola/>}/>        
-            <Route path="/turma/new/:turmaId" element={<NewTurma/>}/>
-            <Route path="/materia/new/:materiaId" element={<NewMateria/>}/>
-            <Route path="/aluno/new/:alunoId" element={<NewAluno/>}/>
-        </Routes>
-    </Router>
-  );
+export default function Routes1() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/escolas" element={<Escolas />} />
+                <Route path="/turmas" element={<Turmas />} />
+                <Route path="/materias" element={<Materias />} />
+                <Route path="/alunos" element={<Alunos />} />
+
+                <Route path="/escola/new/:escolaId" element={<NewEscola />} />
+                <Route path="/turma/new/:turmaId" element={<NewTurma />} />
+                <Route path="/materia/new/:materiaId" element={<NewMateria />} />
+                <Route path="/aluno/new/:alunoId" element={<NewAluno />} />
+            </Routes>
+        </Router>
+    );
 }

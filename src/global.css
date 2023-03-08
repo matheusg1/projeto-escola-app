@@ -19,7 +19,7 @@ nav .container span:hover {
     color: var(--primary-color);
 }
 
-a.nav-link:hover span{
+a.nav-link:hover span {
     color: var(--primary-color);
     transition: var(--standard-transition);
 }
