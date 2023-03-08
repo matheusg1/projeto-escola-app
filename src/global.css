@@ -1,18 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-nav .container span{
+:root {
+    --primary-color: #4D3EFC;
+    --secondary-color: #e7e4ff;
+    --grey: #212529;
+    --standard-transition: 0.2s;
+}
+
+nav .container span {
     font-size: 20px;
     font-family: "Expletus Sans";
-    font-weight: 500;    
+    font-weight: 500;
     color: black;
 }
 
-nav .container .titulo{
-    color: #4D3EFC;
+nav .container span:hover {
+    color: var(--primary-color);
 }
 
-*{
+a.nav-link:hover span{
+    color: var(--primary-color);
+    transition: var(--standard-transition);
+}
+
+nav .container .titulo {
+    color: var(--primary-color);
+}
+
+form .btn {
+    color: white !important;
+    background-color: var(--grey);
+    border: none;
+}
+
+form .btn:hover {
+    background-color: var(--primary-color);
+    transition: var(--standard-transition);
+}
+
+.dropdown .btn,
+header .btn,
+a.back-link .btn {
+    color: white;
+    border: 0;
+}
+
+.dropdown .btn:hover,
+header .btn:hover,
+a.back-link .btn:hover {
+    background-color: var(--primary-color);
+}
+
+* {
     font-family: "Roboto";
     font-weight: 400;
+}
+
+::selection {
+    background-color: var(--secondary-color);
 }

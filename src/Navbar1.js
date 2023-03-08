@@ -11,7 +11,9 @@ export default function Navbar1() {
         <>
             <Navbar bg="light" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home"><img src={logoImage} style={{ height: "40px" }} className="me-2"></img><span class="titulo">Jurema Sistemas</span></Navbar.Brand>
+                    <Navbar.Brand href="#home"><img src={logoImage} style={{ height: "40px" }} className="me-2"></img>
+                    <span className="titulo">Jurema Sistemas</span>
+                    </Navbar.Brand>
                     <Nav className="ms-auto">
                         <Nav.Link href="/escolas"><span>Escolas</span></Nav.Link>
                         <Nav.Link href="/turmas"><span>Turmas</span></Nav.Link>
