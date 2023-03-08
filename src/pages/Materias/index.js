@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
-import { getTurmas, getMateriasByTurma } from "../../services/getTurmas";
+import { getMateriasByTurma } from "../../services/getTurmas";
 import api from "../../services/api";
 
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -11,9 +11,9 @@ import logoImage from "../../assets/logo-favicon.svg";
 
 export default function Materias() {
   const [materias, setMaterias] = useState([]);
-  const [turma, setTurma] = useState("Turmas");
+  const [turma, setTurma] = useState("Turma");
   const [turmas, setTurmas] = useState([]);
-  const [escola, setEscola] = useState("Escolas");
+  const [escola, setEscola] = useState("Escola");
   const [escolas, setEscolas] = useState([]);
 
   useEffect(() => {

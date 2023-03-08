@@ -15,8 +15,8 @@ export default function Alunos() {
 
   const [escolas, setEscolas] = useState([]);
   const [escolaId, setEscolaId] = useState("");
-  const [escola, setEscola] = useState("Escolas");
-  const [turma, setTurma] = useState("Turmas");
+  const [escola, setEscola] = useState("Escola");
+  const [turma, setTurma] = useState("Turma");
   const [turmaId, setTurmaId] = useState([]);
 
   const navigator = useNavigate();

@@ -52,7 +52,7 @@ export default function NewMateria() {
               onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}
             >
               <option defaultValue hidden isdisabled="true">
-                Escolas
+                Escola
               </option>
               {escolas.map((e) => (
                 <option key={e.escolaId} value={e.escolaId}>
@@ -64,7 +64,7 @@ export default function NewMateria() {
             <select className="form-select form-select-lg mb-3"
               onChange={(e) => setTurmaId(e.target.value)}>
               <option defaultValue hidden>
-                Turmas
+                Turma
               </option>
               {turmas && (
                 <>

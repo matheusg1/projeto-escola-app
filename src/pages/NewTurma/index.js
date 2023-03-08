@@ -75,7 +75,7 @@ export default function NewTurma() {
           <form onSubmit={saveOrUpdate} className="mt-5">
             <select className="form-select form-select-lg mb-3" onChange={(e) => setEscolaId(e.target.value)}>
               <option defaultValue hidden>
-                Escolas
+                Escola
               </option>
               {escolas.map((e) => (
                 <option key={e.escolaId} value={e.escolaId}>

@@ -13,7 +13,7 @@ import logoImage from "../../assets/logo-favicon.svg";
 export default function Turmas() {
   const [turmas, setTurmas] = useState([]);
   const [escolas, setEscolas] = useState([]);
-  const [escola, setEscola] = useState("Escolas");
+  const [escola, setEscola] = useState("Escola");
 
   const navigator = useNavigate();
 
