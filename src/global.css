@@ -7,13 +7,13 @@
     --grey: #212529;
     --standard-transition: 0.2s;
 }
-
+/*
 nav .container span {
     font-size: 20px;
     font-family: "Expletus Sans";
     font-weight: 500;
     color: black;
-}
+}*/
 
 nav .container span:hover {
     color: var(--primary-color);
@@ -24,8 +24,11 @@ a.nav-link:hover span {
     transition: var(--standard-transition);
 }
 
-nav .container .titulo {
-    color: var(--primary-color);
+nav :nth-child(n){
+    font-family: "Expletus Sans";
+}
+nav .titulo {
+    color: var(--secondary-color);
 }
 
 form .btn {

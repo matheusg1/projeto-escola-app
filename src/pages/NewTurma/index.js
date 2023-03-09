@@ -25,7 +25,7 @@ export default function NewTurma() {
 
     useEffect(() => {
         getEscolas(setEscolas);
-    });
+    }, []);
 
     async function loadTurma(id) {
         try {
@@ -69,13 +69,14 @@ export default function NewTurma() {
         <div className="container">
             <div className="row mt-5">
                 <div className="col">
-                    <img src={logoImage} className="h-75" alt="logo" />
-                    <h1>Cadastrar turma</h1>
-                    <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
-                    <Link className="back-link" to="/turmas">
-                        <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                    </Link>
-                </div>
+
+                        <img src={logoImage} className="h-75" alt="logo" />
+                        <h1>Cadastrar turma</h1>
+                        <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
+                        <Link className="back-link" to="/turmas">
+                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                        </Link>
+                    </div>
                 <div className="col">
                     <form onSubmit={saveOrUpdate} className="mt-5">
                         <select className="form-select form-select-lg mb-3" ref={selectRef} onChange={(e) => setEscolaId(e.target.value)}>

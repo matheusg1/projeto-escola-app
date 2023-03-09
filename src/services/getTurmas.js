@@ -1,4 +1,16 @@
 import api from "./api";
+
+export async function getEscolaIdByTurma(setEscolaId, id) {
+    try {
+        const response = await api.get(`turma/findByID/?Id=${id}`);
+        console.log("id da turma " + id)        
+        console.log("id da escola " + response.data.escolaId);
+        setEscolaId(response.data.escolaId);
+    } catch (error) {
+        alert("Falha ao buscar escola");
+    }
+}
+
 export async function getTurmas(setTurmas) {
     try {
         const response = await api.get("turma/findAll");
