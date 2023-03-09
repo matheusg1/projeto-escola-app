@@ -13,7 +13,7 @@ import logoImage from "./assets/logo-favicon.svg";
 export default function Navbar1() {
     return (
         <>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="dark" variant="dark" expand="sm">
                 <Container fluid>
                     <Navbar.Brand href="#home"><img src={logoImage} style={{ height: "40px" }} className="me-2"></img>
                         <span className="titulo">Jurema Sistemas</span>

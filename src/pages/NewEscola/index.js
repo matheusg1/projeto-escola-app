@@ -8,6 +8,8 @@ export default function NewEscola() {
     const [id, setId] = useState();
     const [nome, setNome] = useState("");
     const [endereco, setEndereco] = useState("");
+    const [palavraBotao, setPalavraBotao] = useState("Cadastrar")
+
     const { escolaId } = useParams();
 
     const navigator = useNavigate();
@@ -17,6 +19,7 @@ export default function NewEscola() {
             return;
         } else {
             loadEscola(escolaId);
+            setPalavraBotao("Alterar")
         }
     }, [escolaId]);
 
@@ -81,7 +84,7 @@ export default function NewEscola() {
                                     className="form-control" />
                             </div>
                             <button className="btn btn-dark btn-lg w-100" type="submit">
-                                Cadastrar / Alterar
+                                {palavraBotao}
                             </button>
                         </form>
                     </div>

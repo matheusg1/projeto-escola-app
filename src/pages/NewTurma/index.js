@@ -11,6 +11,8 @@ export default function NewTurma() {
     const [id, setId] = useState();
     const [codigo, setCodigo] = useState("");
     const [escolaId, setEscolaId] = useState();
+    const [palavraBotao, setPalavraBotao] = useState("Cadastrar")
+    
     const { turmaId } = useParams();
     const navigator = useNavigate();
     const selectRef = useRef();
@@ -20,6 +22,7 @@ export default function NewTurma() {
             return;
         } else {
             loadTurma(turmaId);
+            setPalavraBotao("Alterar")
         }
     }, [turmaId]);
 
@@ -67,18 +70,14 @@ export default function NewTurma() {
 
     return (
         <div className="container">
-            <div className="row mt-5">
-                <div className="col">
-
-                        <img src={logoImage} className="h-75" alt="logo" />
-                        <h1>Cadastrar turma</h1>
-                        <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
-                        <Link className="back-link" to="/turmas">
-                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                        </Link>
-                    </div>
-                <div className="col">
-                    <form onSubmit={saveOrUpdate} className="mt-5">
+            <div className="row mt-2">
+                <div className="col d-flex justify-content-center flex-column">
+                    <img src={logoImage} className="h-75" alt="logo" />
+                    <h1>Cadastrar turma</h1>
+                    <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
+                </div>
+                <div className="col d-flex justify-content-center flex-column">
+                    <form onSubmit={saveOrUpdate}>
                         <select className="form-select form-select-lg mb-3" ref={selectRef} onChange={(e) => setEscolaId(e.target.value)}>
                             {escolas.map((e) => (
                                 <option key={e.escolaId} value={e.escolaId}>
@@ -92,9 +91,16 @@ export default function NewTurma() {
                             onChange={(e) => setCodigo(e.target.value)}
                             className="form-control form-control-lg mb-3" />
                         <button className="btn btn-dark btn-lg w-100" type="submit">
-                            Cadastrar
+                            {palavraBotao}
                         </button>
                     </form>
+                </div>
+                <div className="row my-2">
+                    <div className="col">
+                        <Link className="back-link" to="/turmas">
+                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

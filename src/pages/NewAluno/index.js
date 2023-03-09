@@ -17,6 +17,8 @@ export default function NewAluno() {
     const [matricula, setMatricula] = useState("");
     const [escolaId, setEscolaId] = useState("");
     const [turmaId, setTurmaId] = useState("");
+    const [palavraBotao, setPalavraBotao] = useState("Cadastrar");
+
     const { alunoId } = useParams();
     const navigator = useNavigate();
 
@@ -25,6 +27,7 @@ export default function NewAluno() {
             return;
         } else {
             loadAluno(alunoId);
+            setPalavraBotao("Alterar")
         }
     }, [alunoId]);
 
@@ -150,7 +153,7 @@ export default function NewAluno() {
                             onChange={(e) => setDataNascimento(e.target.value)} />
 
                         <button className="btn btn-dark btn-lg w-100" type="submit">
-                            Cadastrar
+                            {palavraBotao}
                         </button>
                     </form>
                 </div>
