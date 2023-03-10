@@ -16,7 +16,7 @@ export default function Routes1() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Escolas />} />
                 <Route path="/escolas" element={<Escolas />} />
                 <Route path="/turmas" element={<Turmas />} />
                 <Route path="/materias" element={<Materias />} />

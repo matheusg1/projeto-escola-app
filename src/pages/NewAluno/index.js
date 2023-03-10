@@ -88,16 +88,13 @@ export default function NewAluno() {
 
     return (
         <div className="container">
-            <div className="row mt-5">
-                <div className="col">
+            <div className="row">
+                <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
                     <h1>Cadastrar aluno</h1>
                     <p>Coloque as informações da aluno e clique em 'Cadastrar'</p>
-                    <Link className="back-link" to="/alunos">
-                        <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                    </Link>
                 </div>
-                <div className="col">
+                <div className="col d-flex justify-content-center flex-column">
                     <form onSubmit={saveOrUpdate} className="mt-3">
                         <select className="form-select form-select-lg mb-2"
                             onChange={(e) => {
@@ -158,6 +155,18 @@ export default function NewAluno() {
                     </form>
                 </div>
             </div>
-        </div >
+            <div className="row my-1">
+                <div className="col">
+                    <Link className="back-link" to="/alunos">
+                        <div className="d-none d-sm-block">
+                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                        </div>
+                        <div className="d-block d-sm-none">
+                            <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+        </div>
     );
 }

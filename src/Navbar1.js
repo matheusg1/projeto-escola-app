@@ -15,7 +15,7 @@ export default function Navbar1() {
         <>
             <Navbar bg="dark" variant="dark" expand="sm">
                 <Container fluid>
-                    <Navbar.Brand href="#home"><img src={logoImage} style={{ height: "40px" }} className="me-2"></img>
+                    <Navbar.Brand href="/"><img src={logoImage} style={{ height: "40px" }} className="me-2"></img>
                         <span className="titulo">Jurema Sistemas</span>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />

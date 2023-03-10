@@ -73,7 +73,7 @@ export default function Alunos() {
             <h1 className="mt-5">Alunos</h1>
 
             <div className="d-flex">
-                <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
+                <DropdownButton className="me-2" id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
                 }>
                     {escolas &&
                         escolas.map((e) => (

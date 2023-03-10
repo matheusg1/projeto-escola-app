@@ -38,20 +38,16 @@ export default function NewMateria() {
     }
     return (
         <div className="container">
-            <div className="row mt-5">
-                <div className="col">
+            <div className="row">
+                <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
                     <h1>Cadastrar matéria</h1>
                     <p>Coloque as informações da matéria e clique em 'Cadastrar'</p>
-                    <Link className="back-link" to="/materias">
-                        <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                    </Link>
                 </div>
-                <div className="col">
-                    <form onSubmit={createMateria} className="mt-3">
+                <div className="col d-flex justify-content-center flex-column">
+                    <form onSubmit={createMateria}>
                         <select className="form-select form-select-lg mb-3"
-                            onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}
-                        >
+                            onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}>
                             <option defaultValue hidden isdisabled="true">
                                 Escola
                             </option>
@@ -91,6 +87,18 @@ export default function NewMateria() {
                             Cadastrar
                         </button>
                     </form>
+                </div>
+            </div>
+            <div className="row my-1">
+                <div className="col">
+                    <Link className="back-link" to="/materias">
+                        <div className="d-none d-sm-block">
+                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                        </div>
+                        <div className="d-block d-sm-none">
+                            <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

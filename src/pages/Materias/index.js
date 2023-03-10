@@ -58,8 +58,7 @@ export default function Materias() {
             </header>
             <h1 className="mt-5">Matérias</h1>
             <div className="d-flex flex-row">
-
-                <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
+                <DropdownButton className="me-2" id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
                 }>
                     {escolas &&
                         escolas.map((e) => (
@@ -74,6 +73,7 @@ export default function Materias() {
                             <Dropdown.Item eventKey={[t.turmaId, t.codigo]} key={t.turmaId} value={t.turmaId}>{t.codigo}</Dropdown.Item>
                         ))}
                 </DropdownButton>
+
             </div>
             {materias.length > 0 &&
                 <table className="table table-hover table-bordered table-striped table-dark mt-4">

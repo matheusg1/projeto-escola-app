@@ -61,16 +61,13 @@ export default function NewEscola() {
     return (
         <>
             <div className="container">
-                <div className="row mt-5">
-                    <div className="col">
+                <div className="row">
+                    <div className="col d-flex justify-content-center flex-column">
                         <img src={logoImage} className="h-75" alt="logo" />
                         <h1>Cadastrar escola</h1>
                         <p>Coloque as informações da escola e clique em 'Cadastrar'</p>
-                        <Link className="back-link" to="/escolas">
-                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                        </Link>
                     </div>
-                    <div className="col">
+                    <div className="col d-flex justify-content-center flex-column">
                         <form onSubmit={saveOrUpdate} className="mt-5">
                             <div className="input-group input-group-lg mb-3">
                                 <input type="text" placeholder="Nome"
@@ -87,6 +84,18 @@ export default function NewEscola() {
                                 {palavraBotao}
                             </button>
                         </form>
+                    </div>
+                </div>
+                <div className="row my-1">
+                    <div className="col">
+                        <Link className="back-link" to="/escolas">
+                            <div className="d-none d-sm-block">
+                                <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                            </div>
+                            <div className="d-block d-sm-none">
+                                <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
