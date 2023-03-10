@@ -5,15 +5,25 @@
     --primary-color: #4D3EFC;
     --secondary-color: #e7e4ff;
     --grey: #212529;
+    --light-grey: #212529e1;
     --standard-transition: 0.2s;
 }
+
+* {
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+::selection {
+    background-color: var(--secondary-color);
+}
+
 /*
-nav .container span {
-    font-size: 20px;
-    font-family: "Expletus Sans";
-    font-weight: 500;
-    color: black;
-}*/
+body{
+    background-color: #838383;
+    color: white;
+}
+*/
 
 nav .container span:hover {
     color: var(--primary-color);
@@ -55,11 +65,6 @@ a.back-link .btn:hover {
     background-color: var(--primary-color);
 }
 
-* {
-    font-family: "Roboto";
-    font-weight: 400;
-}
-
-::selection {
-    background-color: var(--secondary-color);
+div.d-block.d-sm-none button{
+    background-color: var(--light-grey);    
 }

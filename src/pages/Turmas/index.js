@@ -82,13 +82,14 @@ export default function Turmas() {
                                 <td>{t.codigo}</td>
                                 <td>{t.quantidadeAlunos}</td>
                                 <td className="d-block">
-                                    <Button className="mx-1" variant="outline-primary" onClick={() => editTurma(t.turmaId)}>Editar</Button>{' '}
-                                    <Button variant="outline-danger" onClick={() => deleteTurma(t.turmaId)}>Apagar</Button>{' '}</td>
+                                    <Button className="my-1" variant="outline-primary" onClick={() => editTurma(t.turmaId)}>Editar</Button>{' '}
+                                    <Button variant="outline-danger" onClick={() => deleteTurma(t.turmaId)}>Apagar</Button>{' '}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             }
-        </div>
+        </div >
     );
 }

@@ -63,11 +63,10 @@ export default function Escolas() {
                             <td>{e.endereco}</td>
                             <td>{e.quantidadeTurmas}</td>
                             <td className="d-block">
-                                <Button className="mx-1" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
+                                <Button className="my-1" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
                                 <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}</td>
                         </tr>
                     ))}
-
                 </tbody>
             </table>
 

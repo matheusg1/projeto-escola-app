@@ -109,8 +109,8 @@ export default function Alunos() {
                                 <td>{a.sobrenome}</td>
                                 <td>{a.cpf}</td>
                                 <td>{Intl.DateTimeFormat("pt-BR").format(new Date(a.dataNascimento))}</td>
-                                <td>
-                                    <Button variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
+                                <td className="d-block">
+                                    <Button className="my-1" variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
                                     <Button variant="outline-danger" onClick={() => deleteAluno(a.alunoId)}>Apagar</Button>{' '}
                                 </td>
                             </tr>
