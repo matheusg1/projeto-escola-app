@@ -57,7 +57,7 @@ export default function Turmas() {
                 </Link>
             </header>
             <h1 className="mt-5">Turmas</h1>
-            <DropdownButton id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelect
+            <DropdownButton data-bs-theme="light" id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelect
             }>
                 {escolas &&
                     escolas.map((e) => (

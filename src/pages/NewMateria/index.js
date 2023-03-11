@@ -39,6 +39,7 @@ export default function NewMateria() {
     return (
         <div className="container">
             <div className="row">
+            <div className="my-5 d-none d-sm-block"></div>
                 <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
                     <h1>Cadastrar matéria</h1>

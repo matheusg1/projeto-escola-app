@@ -12,7 +12,9 @@ import NewTurma from './pages/NewTurma'
 import NewMateria from './pages/NewMateria'
 import NewAluno from './pages/NewAluno'
 
-export default function Routes1() {
+import Teste from './pages/Teste'
+
+export default function AppRoutes() {
     return (
         <Router>
             <Routes>
@@ -21,6 +23,8 @@ export default function Routes1() {
                 <Route path="/turmas" element={<Turmas />} />
                 <Route path="/materias" element={<Materias />} />
                 <Route path="/alunos" element={<Alunos />} />
+
+                <Route path="/teste" element={<Teste />} />
 
                 <Route path="/escola/new/:escolaId" element={<NewEscola />} />
                 <Route path="/turma/new/:turmaId" element={<NewTurma />} />

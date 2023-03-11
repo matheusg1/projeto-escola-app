@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import './global.css';
 import logoImage from "./assets/logo-favicon.svg";
 //import Alert from "react-bootstrap/Alert";
-export default function Navbar1() {
+export default function AppNavbar() {
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="sm">
