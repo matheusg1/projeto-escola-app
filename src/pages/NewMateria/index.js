@@ -4,6 +4,7 @@ import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
 
 import logoImage from "../../assets/logo-favicon.svg";
+import StandardInput from "../../components";
 
 export default function NewMateria() {
     const [turmas, setTurmas] = useState();
@@ -39,7 +40,7 @@ export default function NewMateria() {
     return (
         <div className="container">
             <div className="row">
-            <div className="my-5 d-none d-sm-block"></div>
+                <div className="my-5 d-none d-sm-block"></div>
                 <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
                     <h1>Cadastrar matéria</h1>
@@ -74,16 +75,17 @@ export default function NewMateria() {
                                 </>
                             )}
                         </select>
-                        <input className="form-control form-control-lg mb-3"
+
+                        <StandardInput className="form-control form-control-lg mb-3"
                             placeholder="Nome da matéria"
                             value={nome}
-                            onChange={(e) => setNome(e.target.value)}
-                        />
-                        <input className="form-control form-control-lg mb-3"
+                            onChange={(e) => setNome(e.target.value)} />
+
+                        <StandardInput className="form-control form-control-lg mb-3"
                             placeholder="Professor"
                             value={professor}
-                            onChange={(e) => setProfessor(e.target.value)}
-                        />
+                            onChange={(e) => setProfessor(e.target.value)} />
+
                         <button className="btn btn-dark btn-lg w-100" type="submit">
                             Cadastrar
                         </button>

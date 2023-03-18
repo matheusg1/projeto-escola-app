@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
 
+import StandardInput from "../../components";
+
 import logoImage from "../../assets/logo-favicon.svg";
 
 export default function NewAluno() {
@@ -71,7 +73,6 @@ export default function NewAluno() {
 
         try {
             if (alunoId == 0) {
-                console.log(data);
                 await api.post("/aluno/create/", data);
             } else {
                 data.alunoId = id;
@@ -129,25 +130,20 @@ export default function NewAluno() {
                             )}
                         </select>
                         {matricula && (
-                            <input type="text" className="form-control form-control-lg mb-2" placeholder="Matrícula"
-                                value={matricula}
-                                onChange={(e) => setNome(e.target.value)} disabled />
+                            <StandardInput type="text" placeholder="Matrícula" value={matricula}
+                            onChange={(e) => setMatricula(e.target.value)} disabled={true}/>
                         )}
 
-                        <input type="text" className="form-control form-control-lg mb-2" placeholder="Nome"
-                            value={nome}
+                        <StandardInput type="text" placeholder="Nome" value={nome}
                             onChange={(e) => setNome(e.target.value)} />
 
-                        <input type="text" className="form-control form-control-lg mb-2" placeholder="Sobrenome"
-                            value={sobrenome}
+                        <StandardInput type="text" placeholder="Sobrenome" value={sobrenome}
                             onChange={(e) => setSobrenome(e.target.value)} />
 
-                        <input type="text" className="form-control form-control-lg mb-2" placeholder="CPF"
-                            value={cpf}
+                        <StandardInput type="text" placeholder="CPF" value={cpf}
                             onChange={(e) => setCpf(e.target.value)} />
-
-                        <input type="date" className="form-control form-control-lg mb-2"
-                            value={dataNascimento}
+                        
+                        <StandardInput type="date" placeholder="CPF" value={dataNascimento}
                             onChange={(e) => setDataNascimento(e.target.value)} />
 
                         <button className="btn btn-dark btn-lg w-100" type="submit">

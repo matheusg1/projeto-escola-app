@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 
 import logoImage from "../../assets/logo-favicon.svg";
+import StandardInput from "../../components";
 
 export default function NewEscola() {
     const [id, setId] = useState();
@@ -71,14 +72,14 @@ export default function NewEscola() {
                     <div className="col d-flex justify-content-center flex-column">
                         <form onSubmit={saveOrUpdate} className="mt-5">
 
-                            <input type="text" placeholder="Nome"
+                            <StandardInput type="text" placeholder="Nome"
                                 value={nome}
-                                onChange={(e) => setNome(e.target.value)}
-                                className="form-control form-control-lg mb-2" />
+                                onChange={(e) => setNome(e.target.value)} />
 
-                            <input type="text" placeholder="Endereço" value={endereco}
-                                onChange={(e) => setEndereco(e.target.value)}
-                                className="form-control form-control-lg mb-2" />
+                            <StandardInput type="text" placeholder="Endereço"
+                                value={endereco}
+                                onChange={(e) => setEndereco(e.target.value)} />
+                                
                             <button className="btn btn-dark btn-lg w-100" type="submit">
                                 {palavraBotao}
                             </button>
