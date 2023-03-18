@@ -70,17 +70,15 @@ export default function NewEscola() {
                     </div>
                     <div className="col d-flex justify-content-center flex-column">
                         <form onSubmit={saveOrUpdate} className="mt-5">
-                            <div className="input-group input-group-lg mb-3">
-                                <input type="text" placeholder="Nome"
-                                    value={nome}
-                                    onChange={(e) => setNome(e.target.value)}
-                                    className="form-control" />
-                            </div>
-                            <div className="input-group input-group-lg mb-3">
-                                <input type="text" placeholder="Endereço" value={endereco}
-                                    onChange={(e) => setEndereco(e.target.value)}
-                                    className="form-control" />
-                            </div>
+
+                            <input type="text" placeholder="Nome"
+                                value={nome}
+                                onChange={(e) => setNome(e.target.value)}
+                                className="form-control form-control-lg mb-2" />
+
+                            <input type="text" placeholder="Endereço" value={endereco}
+                                onChange={(e) => setEndereco(e.target.value)}
+                                className="form-control form-control-lg mb-2" />
                             <button className="btn btn-dark btn-lg w-100" type="submit">
                                 {palavraBotao}
                             </button>
