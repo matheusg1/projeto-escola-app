@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
 
 import logoImage from "../../assets/logo-favicon.svg";
 import StandardInput from "../../components/StandardInput";
 import StandardSelect from "../../components/StandardSelect";
+import StandardModal from "../../components/StandardModal"
 import { MateriaIsValid } from "../../services/validations";
 
 export default function NewMateria() {
@@ -15,7 +17,9 @@ export default function NewMateria() {
     const [nome, setNome] = useState("");
     const [professor, setProfessor] = useState("");
     const [turmaId, setTurmaId] = useState();
-    //const [escolaId, setEscolaId] = useState();
+
+    const [smShow, setSmShow] = useState(false);    
+
 
     useEffect(() => {
         getEscolas(setEscolas);
@@ -33,8 +37,12 @@ export default function NewMateria() {
         };
 
         try {
-            if(!MateriaIsValid) return
-            
+            if (!MateriaIsValid(data)) {
+                console.log(smShow);
+                setSmShow(true)
+                return;
+            }
+
             await api.post("/Materia/create", data);
         } catch (error) {
             alert("Erro ao cadastrar matéria");
@@ -44,6 +52,12 @@ export default function NewMateria() {
     return (
         <div className="container">
             <div className="row">
+                <StandardModal 
+                smShow={false}
+                title="modaltitulo"
+                body="modalbody"
+                onHide={() => setSmShow(false)}/>
+
                 <div className="my-5 d-none d-sm-block"></div>
                 <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
@@ -52,6 +66,7 @@ export default function NewMateria() {
                 </div>
                 <div className="col d-flex justify-content-center flex-column">
                     <form onSubmit={createMateria}>
+
                         <StandardSelect
                             onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}>
                             <option defaultValue hidden isdisabled="true">

@@ -1,10 +1,14 @@
+import StandardModal from "../components/StandardModal";
+import React, { useState } from "react";
+
+
 export const EscolaIsValid = (data) => {
     if (!data.nome) {
-        alert("Digite um nome")
+        alert("Insira um nome");
         return false
     }
     if (!data.endereco) {
-        alert("Digite um endereço")
+        alert("Insira um endereço")
         return false;
     }
     return true
@@ -24,8 +28,17 @@ export const TurmaIsValid = (data) => {
 }
 
 export const MateriaIsValid = (data) => {
-    if (!data.nome || !data.professor || data.turmaId) {
-        return false
+    if (!data.nome) {
+        alert("Insira um nome");    
+        return false;
+    }
+    if(!data.professor){
+        alert("Insira o nome do professor");        
+        return false;
+    }
+    if(!data.turmaId){
+        alert("Escolha uma turma");        
+        return false;
     }
 
     return true
