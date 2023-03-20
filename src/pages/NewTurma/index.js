@@ -4,13 +4,15 @@ import { getEscolas } from "../../services/getEscolas";
 import api from "../../services/api";
 
 import logoImage from "../../assets/logo-favicon.svg";
-import StandardInput from "../../components";
+import StandardInput from "../../components/StandardInput";
+import { TurmaIsValid } from "../../services/validations";
+
 
 export default function NewTurma() {
     const [escolas, setEscolas] = useState([]);
 
     const [id, setId] = useState();
-    const [codigo, setCodigo] = useState("");
+    const [codigo, setCodigo] = useState();
     const [escolaId, setEscolaId] = useState();
     const [palavraBotao, setPalavraBotao] = useState("Cadastrar")
 
@@ -51,12 +53,17 @@ export default function NewTurma() {
         e.preventDefault();
 
         const data = {
-            codigo,
+            codigo
         };
 
         try {
+            data.escolaId = escolaId
+            if(!TurmaIsValid(data)){
+                return;
+            }
+
             if (turmaId == 0) {
-                data.escolaId = escolaId
+
                 await api.post("/turma/create/", data);
             } else {
                 data.turmaId = id;
@@ -81,6 +88,9 @@ export default function NewTurma() {
                 <div className="col d-flex justify-content-center flex-column">
                     <form onSubmit={saveOrUpdate}>
                         <select className="form-select form-select-lg mb-3" ref={selectRef} onChange={(e) => setEscolaId(e.target.value)}>
+                            <option defaultValue hidden isdisabled="true">
+                                Escola
+                            </option>
                             {escolas.map((e) => (
                                 <option key={e.escolaId} value={e.escolaId}>
                                     {e.nome}
@@ -89,7 +99,8 @@ export default function NewTurma() {
                             )
                         </select>
 
-                        <StandardInput type="text" placeholder="Código"
+                        <StandardInput type="text"
+                            placeholder="Código"
                             value={codigo}
                             onChange={(e) => setCodigo(e.target.value)}
                         />
@@ -98,17 +109,17 @@ export default function NewTurma() {
                         </button>
                     </form>
                 </div>
-                </div>
-                <div className="row my-1">
-                    <div className="col">
-                        <Link className="back-link" to="/turmas">
-                            <div className="d-none d-sm-block">
-                                <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                            </div>
-                            <div className="d-block d-sm-none">
-                                <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
-                            </div>
-                        </Link>
+            </div>
+            <div className="row my-1">
+                <div className="col">
+                    <Link className="back-link" to="/turmas">
+                        <div className="d-none d-sm-block">
+                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                        </div>
+                        <div className="d-block d-sm-none">
+                            <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

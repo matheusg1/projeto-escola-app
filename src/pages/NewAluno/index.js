@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
+import { AlunoIsValid } from "../../services/validations";
 
-import StandardInput from "../../components";
-
+import StandardInput from "../../components/StandardInput";
+import StandardSelect from "../../components/StandardSelect";
 import logoImage from "../../assets/logo-favicon.svg";
 
 export default function NewAluno() {
@@ -67,17 +68,18 @@ export default function NewAluno() {
             sobrenome,
             cpf,
             dataNascimento,
-            escolaId,
-            turmaId,
+            turmaId
         };
 
         try {
+            if(!AlunoIsValid(data)) return
+
             if (alunoId == 0) {
                 await api.post("/aluno/create/", data);
-            } else {
+            }
+            else {
                 data.alunoId = id;
                 data.turmaId = turmaId;
-                data.escolaId = escolaId;
                 data.matricula = matricula;
                 await api.put("/aluno/update/", data);
             }
@@ -115,8 +117,8 @@ export default function NewAluno() {
                             ))}
                         </select>
 
-                        <select className="form-select form-select-lg mb-2" onChange={(e) => setTurmaId(e.target.value)}>
-                            <option defaultValue hidden>
+                        <StandardSelect className="form-select form-select-lg mb-2" onChange={(e) => setTurmaId(e.target.value)}>
+                            <option defaultValue hidden isdisabled="true">
                                 Turma
                             </option>
                             {turmas && (
@@ -128,10 +130,10 @@ export default function NewAluno() {
                                     ))}
                                 </>
                             )}
-                        </select>
+                        </StandardSelect>
                         {matricula && (
                             <StandardInput type="text" placeholder="Matrícula" value={matricula}
-                            onChange={(e) => setMatricula(e.target.value)} disabled={true}/>
+                                onChange={(e) => setMatricula(e.target.value)} disabled={true} />
                         )}
 
                         <StandardInput type="text" placeholder="Nome" value={nome}
@@ -142,7 +144,7 @@ export default function NewAluno() {
 
                         <StandardInput type="text" placeholder="CPF" value={cpf}
                             onChange={(e) => setCpf(e.target.value)} />
-                        
+
                         <StandardInput type="date" placeholder="CPF" value={dataNascimento}
                             onChange={(e) => setDataNascimento(e.target.value)} />
 

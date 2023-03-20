@@ -3,7 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 
 import logoImage from "../../assets/logo-favicon.svg";
-import StandardInput from "../../components";
+import StandardInput from "../../components/StandardInput";
+import { EscolaIsValid } from "../../services/validations";
 
 export default function NewEscola() {
     const [id, setId] = useState();
@@ -47,6 +48,8 @@ export default function NewEscola() {
         };
 
         try {
+            if (!EscolaIsValid(data)) return
+
             if (escolaId == 0) {
                 await api.post("/escola/create/", data);
             } else {
@@ -79,7 +82,7 @@ export default function NewEscola() {
                             <StandardInput type="text" placeholder="Endereço"
                                 value={endereco}
                                 onChange={(e) => setEndereco(e.target.value)} />
-                                
+
                             <button className="btn btn-dark btn-lg w-100" type="submit">
                                 {palavraBotao}
                             </button>

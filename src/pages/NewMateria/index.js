@@ -4,7 +4,9 @@ import { getEscolas, getTurmasByEscola } from "../../services/getEscolas";
 import api from "../../services/api";
 
 import logoImage from "../../assets/logo-favicon.svg";
-import StandardInput from "../../components";
+import StandardInput from "../../components/StandardInput";
+import StandardSelect from "../../components/StandardSelect";
+import { MateriaIsValid } from "../../services/validations";
 
 export default function NewMateria() {
     const [turmas, setTurmas] = useState();
@@ -12,8 +14,8 @@ export default function NewMateria() {
 
     const [nome, setNome] = useState("");
     const [professor, setProfessor] = useState("");
-    const [turmaId, setTurmaId] = useState("");
-    const [escolaId, setEscolaId] = useState("");
+    const [turmaId, setTurmaId] = useState();
+    //const [escolaId, setEscolaId] = useState();
 
     useEffect(() => {
         getEscolas(setEscolas);
@@ -31,6 +33,8 @@ export default function NewMateria() {
         };
 
         try {
+            if(!MateriaIsValid) return
+            
             await api.post("/Materia/create", data);
         } catch (error) {
             alert("Erro ao cadastrar matéria");
@@ -48,7 +52,7 @@ export default function NewMateria() {
                 </div>
                 <div className="col d-flex justify-content-center flex-column">
                     <form onSubmit={createMateria}>
-                        <select className="form-select form-select-lg mb-3"
+                        <StandardSelect
                             onChange={(e) => getTurmasByEscola(setTurmas, e.target.value)}>
                             <option defaultValue hidden isdisabled="true">
                                 Escola
@@ -58,9 +62,9 @@ export default function NewMateria() {
                                     {e.nome}
                                 </option>
                             ))}
-                        </select>
+                        </StandardSelect>
 
-                        <select className="form-select form-select-lg mb-3"
+                        <StandardSelect
                             onChange={(e) => setTurmaId(e.target.value)}>
                             <option defaultValue hidden>
                                 Turma
@@ -74,14 +78,14 @@ export default function NewMateria() {
                                     ))}
                                 </>
                             )}
-                        </select>
+                        </StandardSelect>
 
-                        <StandardInput className="form-control form-control-lg mb-3"
+                        <StandardInput
                             placeholder="Nome da matéria"
                             value={nome}
                             onChange={(e) => setNome(e.target.value)} />
 
-                        <StandardInput className="form-control form-control-lg mb-3"
+                        <StandardInput
                             placeholder="Professor"
                             value={professor}
                             onChange={(e) => setProfessor(e.target.value)} />
