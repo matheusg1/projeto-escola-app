@@ -1,6 +1,8 @@
 import React from "react";
 import AppNavbar from "./AppNavbar";
 import AppRoutes from './routes';
+import Footer from "./components/Footer";
+
 import './global.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,6 +13,7 @@ export default function App() {
         <>
             <AppNavbar />
             <AppRoutes />
+            <Footer/>
         </>
     );
 }
