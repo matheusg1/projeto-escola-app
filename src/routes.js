@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Login from './pages/Login'
 import Escolas from './pages/Escolas'
@@ -15,6 +15,8 @@ import NewAluno from './pages/NewAluno'
 export default function AppRoutes() {
     return (
         <Routes>
+            
+            <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/" element={<Escolas />} />
             <Route path="/escolas" element={<Escolas />} />
             <Route path="/turmas" element={<Turmas />} />

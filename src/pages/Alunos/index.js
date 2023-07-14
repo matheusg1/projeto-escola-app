@@ -109,8 +109,8 @@ export default function Alunos() {
                                 <td>{a.sobrenome}</td>
                                 <td>{a.cpf}</td>
                                 <td>{Intl.DateTimeFormat("pt-BR").format(new Date(a.dataNascimento))}</td>
-                                <td className="d-flex justify-content-evenly">
-                                    <Button className="my-1" variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
+                                <td className="text-center">
+                                    <Button className="my-1 my-sm-0" variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
                                     <Button variant="outline-danger" onClick={() => deleteAluno(a.alunoId)}>Apagar</Button>{' '}
                                 </td>
                             </tr>

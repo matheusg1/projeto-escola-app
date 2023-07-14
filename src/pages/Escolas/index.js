@@ -57,15 +57,15 @@ export default function Escolas() {
                         </tr>
                     </thead>
                     <tbody>
-
                         {escolas.map((e) => (
-                            <tr key={e.escolaId}>
+                            <tr className="flex-grow-1" key={e.escolaId}>
                                 <td>{e.nome}</td>
                                 <td>{e.endereco}</td>
                                 <td>{e.quantidadeTurmas}</td>
-                                <td className="d-flex justify-content-evenly">
-                                    <Button className="my-1" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
-                                    <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}</td>
+                                <td className="text-center">
+                                    <Button className="my-1 my-sm-0" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
+                                    <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom';
 import api from '../../services/api'
 */
 import logoImage from "../../assets/logo-favicon.svg";
-import padlock from "../../assets/padlock.png";
+//import padlock from "../../assets/padlock.png";
 
 export default function Login() {
     /*const [userName, setUserName] = useState('');
@@ -19,7 +19,7 @@ export default function Login() {
                 <section className="form">
                     <img src={logoImage} alt="logo" />
                 </section>
-                <img src={padlock} alt="login" />
+                <img alt="login" />
             </div>
         </>
     );

@@ -65,15 +65,17 @@ export default function NewEscola() {
     return (
         <>
             <div className="container">
-                <div className="row">
-                    <div className="my-5 d-none d-sm-block"></div>
+                <div className="row my-xxl-5 ">
                     <div className="col d-flex justify-content-center flex-column">
                         <img src={logoImage} className="h-75" alt="logo" />
                         <h1>Cadastrar escola</h1>
                         <p>Coloque as informações da escola e clique em 'Cadastrar'</p>
+                        <Link className="back-link d-none d-sm-block" to="/escolas">
+                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                        </Link>
                     </div>
                     <div className="col d-flex justify-content-center flex-column">
-                        <form onSubmit={saveOrUpdate} className="mt-5">
+                        <form onSubmit={saveOrUpdate} className="">
 
                             <StandardInput type="text" placeholder="Nome"
                                 value={nome}
@@ -87,17 +89,8 @@ export default function NewEscola() {
                                 {palavraBotao}
                             </button>
                         </form>
-                    </div>
-                </div>
-                <div className="row my-1">
-                    <div className="col">
-                        <Link className="back-link" to="/escolas">
-                            <div className="d-none d-sm-block">
-                                <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                            </div>
-                            <div className="d-block d-sm-none">
-                                <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
-                            </div>
+                        <Link className="back-link d-block my-1 d-sm-none" to="/escolas">
+                            <button className="btn btn-dark btn-lg w-100 bg-secondary" type="button">Voltar</button>
                         </Link>
                     </div>
                 </div>

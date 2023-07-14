@@ -72,7 +72,7 @@ export default function NewAluno() {
         };
 
         try {
-            if(!AlunoIsValid(data)) return
+            if (!AlunoIsValid(data)) return
 
             if (alunoId == 0) {
                 await api.post("/aluno/create/", data);
@@ -91,12 +91,14 @@ export default function NewAluno() {
 
     return (
         <div className="container">
-            <div className="row">
-                <div className="my-5 d-none d-sm-block"></div>
+            <div className="row my-xxl-5">
                 <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
                     <h1>Cadastrar aluno</h1>
                     <p>Coloque as informações da aluno e clique em 'Cadastrar'</p>
+                    <Link className="back-link d-none d-sm-block" to="/alunos">
+                        <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                    </Link>
                 </div>
                 <div className="col d-flex justify-content-center flex-column">
                     <form onSubmit={saveOrUpdate} className="mt-3">
@@ -152,9 +154,17 @@ export default function NewAluno() {
                             {palavraBotao}
                         </button>
                     </form>
+                    <Link className="back-link d-block my-1 d-sm-none" to="/alunos">
+                        <button className="btn btn-dark btn-lg w-100 bg-secondary" type="button">Voltar</button>
+                    </Link>
                 </div>
             </div>
-            <div className="row my-1">
+
+        </div>
+    );
+}
+/*
+<div className="row my-1">
                 <div className="col">
                     <Link className="back-link" to="/alunos">
                         <div className="d-none d-sm-block">
@@ -166,6 +176,4 @@ export default function NewAluno() {
                     </Link>
                 </div>
             </div>
-        </div>
-    );
-}
+*/

@@ -18,7 +18,7 @@ export default function NewMateria() {
     const [professor, setProfessor] = useState("");
     const [turmaId, setTurmaId] = useState();
 
-    const [smShow, setSmShow] = useState(false);    
+    const [smShow, setSmShow] = useState(false);
 
 
     useEffect(() => {
@@ -51,18 +51,20 @@ export default function NewMateria() {
     }
     return (
         <div className="container">
-            <div className="row">
-                <StandardModal 
-                smShow={false}
-                title="modaltitulo"
-                body="modalbody"
-                onHide={() => setSmShow(false)}/>
+            <div className="row my-xxl-5">
+                <StandardModal
+                    smShow={false}
+                    title="modaltitulo"
+                    body="modalbody"
+                    onHide={() => setSmShow(false)} />
 
-                <div className="my-5 d-none d-sm-block"></div>
                 <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
                     <h1>Cadastrar matéria</h1>
                     <p>Coloque as informações da matéria e clique em 'Cadastrar'</p>
+                    <Link className="back-link d-none d-sm-block" to="/materias">
+                        <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                    </Link>
                 </div>
                 <div className="col d-flex justify-content-center flex-column">
                     <form onSubmit={createMateria}>
@@ -111,18 +113,9 @@ export default function NewMateria() {
                     </form>
                 </div>
             </div>
-            <div className="row my-1">
-                <div className="col">
-                    <Link className="back-link" to="/materias">
-                        <div className="d-none d-sm-block">
-                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                        </div>
-                        <div className="d-block d-sm-none">
-                            <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
-                        </div>
-                    </Link>
-                </div>
-            </div>
+            <Link className="back-link d-block my-1 d-sm-none" to="/materias">
+                <button className="btn btn-dark btn-lg w-100 bg-secondary" type="button">Voltar</button>
+            </Link>
         </div>
     );
 }

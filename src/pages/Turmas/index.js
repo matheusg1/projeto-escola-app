@@ -81,8 +81,8 @@ export default function Turmas() {
                                 <td>{escola}</td>
                                 <td>{t.codigo}</td>
                                 <td>{t.quantidadeAlunos}</td>
-                                <td className="d-flex justify-content-evenly">
-                                    <Button className="my-1" variant="outline-primary" onClick={() => editTurma(t.turmaId)}>Editar</Button>{' '}
+                                <td className="text-center">
+                                    <Button className="my-1 my-sm-0" variant="outline-primary" onClick={() => editTurma(t.turmaId)}>Editar</Button>{' '}
                                     <Button variant="outline-danger" onClick={() => deleteTurma(t.turmaId)}>Apagar</Button>{' '}
                                 </td>
                             </tr>

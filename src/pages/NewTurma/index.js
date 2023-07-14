@@ -58,7 +58,7 @@ export default function NewTurma() {
 
         try {
             data.escolaId = escolaId
-            if(!TurmaIsValid(data)){
+            if (!TurmaIsValid(data)) {
                 return;
             }
 
@@ -79,11 +79,13 @@ export default function NewTurma() {
     return (
         <div className="container">
             <div className="row">
-                <div className="my-5 d-none d-sm-block"></div>
                 <div className="col d-flex justify-content-center flex-column">
                     <img src={logoImage} className="h-75" alt="logo" />
                     <h1>Cadastrar turma</h1>
                     <p>Coloque as informações da turma e clique em 'Cadastrar'</p>
+                    <Link className="back-link d-none d-sm-block" to="/turmas">
+                        <button className="btn btn-dark btn-lg" type="button">Voltar</button>
+                    </Link>
                 </div>
                 <div className="col d-flex justify-content-center flex-column">
                     <form onSubmit={saveOrUpdate}>
@@ -108,20 +110,11 @@ export default function NewTurma() {
                             {palavraBotao}
                         </button>
                     </form>
-                </div>
-            </div>
-            <div className="row my-1">
-                <div className="col">
-                    <Link className="back-link" to="/turmas">
-                        <div className="d-none d-sm-block">
-                            <button className="btn btn-dark btn-lg" type="button">Voltar</button>
-                        </div>
-                        <div className="d-block d-sm-none">
-                            <button className="btn btn-dark btn-lg w-100" type="button">Voltar</button>
-                        </div>
+                    <Link className="back-link d-block my-1 d-sm-none" to="/turmas">
+                        <button className="btn btn-dark btn-lg w-100 bg-secondary" type="button">Voltar</button>
                     </Link>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

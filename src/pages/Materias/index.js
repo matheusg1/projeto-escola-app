@@ -94,7 +94,7 @@ export default function Materias() {
                                 <td>{m.nome}</td>
                                 <td>{m.professor}</td>
                                 <td className="text-center">
-                                    <Button variant="outline-danger" onClick={() => deleteMateria(m.materiaId)}>Apagar</Button>{' '}
+                                    <Button className="my-1 my-sm-0" variant="outline-danger" onClick={() => deleteMateria(m.materiaId)}>Apagar</Button>{' '}
                                 </td>
                             </tr>
                         ))}
