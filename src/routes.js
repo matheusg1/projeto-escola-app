@@ -11,12 +11,14 @@ import NewEscola from './pages/NewEscola'
 import NewTurma from './pages/NewTurma'
 import NewMateria from './pages/NewMateria'
 import NewAluno from './pages/NewAluno'
+import Inicio from './pages/Inicio';
 
 export default function AppRoutes() {
     return (
         <Routes>
             
             <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/inicio" element={<Inicio />} />
             <Route path="/" element={<Escolas />} />
             <Route path="/escolas" element={<Escolas />} />
             <Route path="/turmas" element={<Turmas />} />
