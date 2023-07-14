@@ -35,41 +35,42 @@ export default function Escolas() {
     }
 
     return (
-        <div className="mt-3 mx-5">
+        <div className="mt-3 mx-md-5">
             <header className="d-flex flex-row align-items-center justify-content-between">
                 <img src={logoImage} style={{ height: "70px" }} alt="logo" />
                 <h2 className="px-4">
                     Bem vindo!
                 </h2>
-                <Link className="btn btn-dark btn-lg" style={{ width: "300px" }} to="/escola/new/0">
+                <Link className="btn btn-dark btn-lg me-1 me-md-0 rounded-1" style={{ width: "300px" }} to="/escola/new/0">
                     Cadastrar nova escola
                 </Link>
             </header>
             <h1 className="mt-5">Escolas registradas</h1>
-            <table className="table table-hover table-bordered table-striped table-dark mt-4">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Endereço</th>
-                        <th scope="col">Qtd Turmas</th>
-                        <th scope="col">Alterar / Apagar</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {escolas.map((e) => (
-                        <tr key={e.escolaId}>
-                            <td>{e.nome}</td>
-                            <td>{e.endereco}</td>
-                            <td>{e.quantidadeTurmas}</td>
-                            <td className="d-block">
-                                <Button className="my-1" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
-                                <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}</td>
+            <div className="table-responsive">
+                <table className="table table-hover table-bordered table-striped table-dark mt-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Qtd Turmas</th>
+                            <th scope="col">Alterar / Apagar</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
 
+                        {escolas.map((e) => (
+                            <tr key={e.escolaId}>
+                                <td>{e.nome}</td>
+                                <td>{e.endereco}</td>
+                                <td>{e.quantidadeTurmas}</td>
+                                <td className="d-flex justify-content-evenly">
+                                    <Button className="my-1" variant="outline-primary" onClick={() => editEscola(e.escolaId)}>Editar</Button>{' '}
+                                    <Button variant="outline-danger" onClick={() => deleteEscola(e.escolaId)}>Apagar</Button>{' '}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div >
     );
 }
@@ -86,8 +87,6 @@ export default function Escolas() {
           </li>
         ))}
       </ul>
-
-
 
 
 

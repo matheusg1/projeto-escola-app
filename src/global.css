@@ -33,14 +33,14 @@ a.nav-link:hover span {
     color: var(--primary-color);
     transition: var(--standard-transition);
 }
-
-nav :nth-child(n){
+.navbar-brand{
     font-family: "Expletus Sans";
 }
+/*
 nav .titulo {
     color: var(--secondary-color);
 }
-
+*/
 form .btn {
     color: white !important;
     background-color: var(--grey);

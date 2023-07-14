@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css"
 
 import Button from 'react-bootstrap/Button';
@@ -13,24 +14,33 @@ import logoImage from "./assets/logo-favicon.svg";
 export default function AppNavbar() {
     return (
         <>
-            <Navbar bg="dark" variant="dark" expand="sm">
-                <Container fluid>
-                    <Navbar.Brand href="/"><img src={logoImage} style={{ height: "40px" }} className="me-2"></img>
-                        <span className="titulo">Jurema Sistemas</span>
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" />
-                    <Navbar.Collapse id="navbarScroll">
-                        <Nav className="ms-auto my-2 my-lg-0"
-                            style={{ maxHeight: '100px' }}
-                            navbarScroll>
-                            <Nav.Link href="/escolas">Escolas</Nav.Link>
-                            <Nav.Link href="/turmas">Turmas</Nav.Link>
-                            <Nav.Link href="/materias">Matérias</Nav.Link>
-                            <Nav.Link href="/alunos">Alunos</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+                <div className="container-fluid">
+                    <Link>
+                        <img id="img-logo" className="ms-lg-4" height="40px" src={logoImage} />
+                    </Link>
+                    <Link className="navbar-brand  mx-0 ps-lg-3" to="/">Instituto Jurema de Ensino</Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link className="nav-link text-white" aria-current="page" to="/escolas">Escolas</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link text-white" to="/materias">Matérias</Link>
+                            </li>
+                            <li className="nav-item  text-light">
+                                <Link className="nav-link text-white" to="/turmas">Turmas</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link text-white" to="/alunos">Alunos</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </>
     );
 }

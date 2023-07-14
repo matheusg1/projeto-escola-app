@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Login from './pages/Login'
 import Escolas from './pages/Escolas'
@@ -14,19 +14,17 @@ import NewAluno from './pages/NewAluno'
 
 export default function AppRoutes() {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Escolas />} />
-                <Route path="/escolas" element={<Escolas />} />
-                <Route path="/turmas" element={<Turmas />} />
-                <Route path="/materias" element={<Materias />} />
-                <Route path="/alunos" element={<Alunos />} />
+        <Routes>
+            <Route path="/" element={<Escolas />} />
+            <Route path="/escolas" element={<Escolas />} />
+            <Route path="/turmas" element={<Turmas />} />
+            <Route path="/materias" element={<Materias />} />
+            <Route path="/alunos" element={<Alunos />} />
 
-                <Route path="/escola/new/:escolaId" element={<NewEscola />} />
-                <Route path="/turma/new/:turmaId" element={<NewTurma />} />
-                <Route path="/materia/new/:materiaId" element={<NewMateria />} />
-                <Route path="/aluno/new/:alunoId" element={<NewAluno />} />
-            </Routes>
-        </Router>
+            <Route path="/escola/new/:escolaId" element={<NewEscola />} />
+            <Route path="/turma/new/:turmaId" element={<NewTurma />} />
+            <Route path="/materia/new/:materiaId" element={<NewMateria />} />
+            <Route path="/aluno/new/:alunoId" element={<NewAluno />} />
+        </Routes>
     );
 }

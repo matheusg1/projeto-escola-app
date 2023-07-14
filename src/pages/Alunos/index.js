@@ -60,13 +60,13 @@ export default function Alunos() {
     }
 
     return (
-        <div className="mt-3 mx-5">
+        <div className="mt-3 mx-md-5">
             <header className="d-flex flex-row align-items-center justify-content-between">
                 <img src={logoImage} style={{ height: "70px" }} alt="logo" />
                 <h2 className="px-4">
                     Bem vindo!
                 </h2>
-                <Link className="btn btn-dark btn-lg" to="/aluno/new/0">
+                <Link className="btn btn-dark btn-lg me-1 me-md-0 rounded-1" to="/aluno/new/0">
                     Cadastrar novo aluno
                 </Link>
             </header>
@@ -109,7 +109,7 @@ export default function Alunos() {
                                 <td>{a.sobrenome}</td>
                                 <td>{a.cpf}</td>
                                 <td>{Intl.DateTimeFormat("pt-BR").format(new Date(a.dataNascimento))}</td>
-                                <td className="d-block">
+                                <td className="d-flex justify-content-evenly">
                                     <Button className="my-1" variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
                                     <Button variant="outline-danger" onClick={() => deleteAluno(a.alunoId)}>Apagar</Button>{' '}
                                 </td>

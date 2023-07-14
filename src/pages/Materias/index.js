@@ -46,13 +46,13 @@ export default function Materias() {
     }
 
     return (
-        <div className="mt-3 mx-5">
+        <div className="mt-3 mx-md-5">
             <header className="d-flex flex-row align-items-center justify-content-between">
                 <img src={logoImage} style={{ height: "70px" }} alt="logo" />
                 <h2 className="px-4">
                     Bem vindo!
                 </h2>
-                <Link className="btn btn-dark btn-lg" to="/materia/new/0">
+                <Link className="btn btn-dark btn-lg me-1 me-md-0 rounded-1" to="/materia/new/0">
                     Cadastrar nova matéria
                 </Link>
             </header>
@@ -93,7 +93,7 @@ export default function Materias() {
                                 <td>{turma}</td>
                                 <td>{m.nome}</td>
                                 <td>{m.professor}</td>
-                                <td>
+                                <td className="text-center">
                                     <Button variant="outline-danger" onClick={() => deleteMateria(m.materiaId)}>Apagar</Button>{' '}
                                 </td>
                             </tr>
