@@ -62,16 +62,14 @@ export default function Alunos() {
     return (
         <div className="mt-3 mx-md-5">
             <header className="d-flex flex-row align-items-center justify-content-between">
+                <div className="display-1 fw-bold mb-3">
+                    Alunos
+                </div>
                 <img src={logoImage} style={{ height: "70px" }} alt="logo" />
-                <h2 className="px-4">
-                    Bem vindo!
-                </h2>
                 <Link className="btn btn-dark btn-lg me-1 me-md-0 rounded-1" to="/aluno/new/0">
                     Cadastrar novo aluno
                 </Link>
             </header>
-            <h1 className="mt-5">Alunos</h1>
-
             <div className="d-flex">
                 <DropdownButton className="me-2" id="dropdown-basic-button" variant="dark" size="lg" title={escola} onSelect={handleSelectEscola
                 }>
@@ -90,33 +88,35 @@ export default function Alunos() {
                 </DropdownButton>
             </div>
             {alunos.length > 0 &&
-                <table className="table table-hover table-bordered table-striped table-dark mt-4">
-                    <thead>
-                        <tr>
-                            <th scope="col">Matrícula</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Sobrenome</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">Nascimento</th>
-                            <th scope="col">Alterar / Apagar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {alunos.map((a) => (
-                            <tr key={a.alunoId}>
-                                <td>{a.matricula}</td>
-                                <td>{a.nome}</td>
-                                <td>{a.sobrenome}</td>
-                                <td>{a.cpf}</td>
-                                <td>{Intl.DateTimeFormat("pt-BR").format(new Date(a.dataNascimento))}</td>
-                                <td className="text-center">
-                                    <Button className="my-1 my-sm-0" variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
-                                    <Button variant="outline-danger" onClick={() => deleteAluno(a.alunoId)}>Apagar</Button>{' '}
-                                </td>
+                <div className="table-responsive">
+                    <table className="table table-hover table-bordered table-striped table-dark mt-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">Matrícula</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Sobrenome</th>
+                                <th scope="col">CPF</th>
+                                <th scope="col">Nascimento</th>
+                                <th scope="col">Alterar / Apagar</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {alunos.map((a) => (
+                                <tr key={a.alunoId}>
+                                    <td>{a.matricula}</td>
+                                    <td>{a.nome}</td>
+                                    <td>{a.sobrenome}</td>
+                                    <td>{a.cpf}</td>
+                                    <td>{Intl.DateTimeFormat("pt-BR").format(new Date(a.dataNascimento))}</td>
+                                    <td className="text-center">
+                                        <Button className="my-1 my-sm-0" variant="outline-primary" onClick={() => editAluno(a.alunoId)}>Editar</Button>{' '}
+                                        <Button variant="outline-danger" onClick={() => deleteAluno(a.alunoId)}>Apagar</Button>{' '}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             }
         </div>
     );

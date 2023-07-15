@@ -14,7 +14,7 @@ import logoImage from "./assets/logo-favicon.svg";
 export default function AppNavbar() {
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <nav className="navbar navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
                 <div className="container-fluid">
                     <Link>
                         <img id="img-logo" className="ms-lg-4" height="40px" src={logoImage} />

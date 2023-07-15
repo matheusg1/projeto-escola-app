@@ -17,9 +17,8 @@ export default function AppRoutes() {
     return (
         <Routes>
             
-            <Route path="*" element={<Navigate to="/" replace />} />
-            <Route path="/inicio" element={<Inicio />} />
-            <Route path="/" element={<Escolas />} />
+            <Route path="*" element={<Navigate to="/" replace />} />            
+            <Route path="/" element={<Inicio />} />
             <Route path="/escolas" element={<Escolas />} />
             <Route path="/turmas" element={<Turmas />} />
             <Route path="/materias" element={<Materias />} />
