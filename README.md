@@ -1,7 +1,7 @@
 
 #  Sistema escolar - Web App c/ React
 
-Aplicação sendo criada para consumir uma API escrita por mim no .NET.
+Aplicação criada para consumir uma API.
 
 Link da API :
 https://github.com/matheusg1/escola-db-api
